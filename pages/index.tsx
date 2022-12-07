@@ -1,6 +1,7 @@
 import React, { Key } from "react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
+import NavBar, { Banner } from "../components"
 
 interface Images {
   id: string;
@@ -14,7 +15,8 @@ interface Images {
 export default function App(props: { images: Images[] }) {
     return (
         <div>
-            <h1 className="text-3xl font-bold text-red-500">Hello World</h1>
+            <NavBar />
+            <Banner />
             {props.images.map((item: Images, idx: Key) => {
                 return (
                     <>
