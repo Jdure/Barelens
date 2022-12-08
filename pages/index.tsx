@@ -1,35 +1,16 @@
 import React, { Key } from "react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import NavBar, { Banner } from "../components"
-
-interface Images {
-  id: string;
-  title: string;
-  image: string;
-  width: Number | undefined;
-  height: Number | undefined;
-  created_at: Date;
-}
+import NavBar, { Banner, Carousel } from "../components"
+import { Images } from "../types"
 
 export default function App(props: { images: Images[] }) {
+    const bannerImgs = props.images
     return (
         <div>
             <NavBar />
             <Banner />
-            {props.images.map((item: Images, idx: Key) => {
-                return (
-                    <>
-                        <p key={idx}>{item.title}</p>
-                        <Image
-                            width={500}
-                            height={500}
-                            alt={item.title}
-                            src={item.image}
-                        />
-                    </>
-                )
-            })}
+            <Carousel data={bannerImgs} />
         </div>
     )
 }

@@ -1,5 +1,10 @@
 import Link from "next/link"
-import React from "react"
+import React, { Key } from "react"
+import { Swiper, SwiperSlide } from "swiper/react"
+import { EffectCards, Pagination, Lazy } from "swiper"
+import "swiper/css"
+import { Images } from "../types"
+import Image from "next/image"
 
 export default function NavBar() {
     const listStyle = "py-2 px-4 hover:underline"
@@ -34,6 +39,42 @@ export function Banner() {
                 <p>Portraits, Families & Weddings</p>
                 <p>2022, Limited Liability Company LLC</p>
             </div>
+        </div>
+    )
+}
+
+// FIXME: Pagination Icons not displaying with Card effect
+
+export function Carousel({ data }: any) {
+    return (
+        <div className="container mt-5 mx-auto">
+            <Swiper
+                modules={[EffectCards, Lazy, Pagination]}
+                spaceBetween={15}
+                slidesPerView={1.5}
+                centeredSlides={true}
+                loop
+                lazy={true}
+                pagination={true}
+                effect="cards"
+            >
+                {data.map((value: Images, idx: Key) => {
+                    return (
+                        <SwiperSlide key={idx}>
+                            <Image
+                                width={1280}
+                                height={720}
+                                key={idx}
+                                alt={value.title}
+                                src={value.image}
+                                style={{
+                                    objectFit: "contain",
+                                }}
+                            />
+                        </SwiperSlide>
+                    )
+                })}
+            </Swiper>
         </div>
     )
 }
