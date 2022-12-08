@@ -15,7 +15,7 @@ export default function NavBar() {
                     About
                 </Link>
                 <Link className="py-2 px-4 hover:underline" href={"/"}>
-                    Works
+                    Gallery
                 </Link>
                 <Link className="py-2 px-4 hover:underline" href={"/"}>
                     Contact
@@ -27,9 +27,8 @@ export default function NavBar() {
 
 export function Banner() {
     return (
-        <div className="flex flex-col pt-28">
+        <div className="flex flex-col pt-28 divide-y">
             <h1 className="text-center pb-4 text-9xl">BARE LENS</h1>
-            <hr />
             <div className="flex flex-row justify-evenly py-4">
                 <p>Canadian Photographer</p>
                 <p>Portraits, Families & Weddings</p>
