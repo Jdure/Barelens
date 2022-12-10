@@ -32,8 +32,9 @@ export default function NavBar() {
 
 export function Banner() {
     return (
-        <div className="flex flex-col pt-28 divide-y">
+        <div className="flex flex-col pt-28">
             <h1 className="text-center pb-4 text-9xl">BARE LENS</h1>
+            <hr className="my-2 mx-auto w-80 h-0 bg-gray-100" />
             <div className="flex flex-row justify-evenly py-4">
                 <p>Canadian Photographer</p>
                 <p>Portraits, Families & Weddings</p>
@@ -85,7 +86,7 @@ export function About() {
                     <br /> One Frame at a Time
                 </h2>
                 <Image
-                    className="rounded-sm"
+                    className="rounded-sm drop-shadow-md"
                     src={"https://source.unsplash.com/vH96q7p1sgw/720x1280"}
                     width={400}
                     height={400}
@@ -94,7 +95,7 @@ export function About() {
             </div>
             <div className="flex flex-col basis-1/2 items-center justify-evenly">
                 <Image
-                    className="rounded-sm"
+                    className="rounded-sm drop-shadow-md"
                     src={"https://source.unsplash.com/FXJRdoIhs_U/720x1280"}
                     width={300}
                     height={300}
@@ -177,6 +178,19 @@ export function Works() {
                         elit.
                     </p>
                 </div>
+            </div>
+        </div>
+    )
+}
+
+export function Contact() {
+    return (
+        <div className="flex flex-col bg-gray-100 h-64">
+            <div className="flex flex-col items-center space-y-12">
+                <h2 className="text-5xl pt-6 lowercase">
+                    Let us capture your memories today!
+                </h2>
+                <p className="text-3xl">Barelens@example.com</p>
             </div>
         </div>
     )

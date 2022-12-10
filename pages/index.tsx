@@ -1,7 +1,7 @@
 import React, { Key } from "react";
 import { GetStaticProps } from "next";
 import Image from "next/image";
-import NavBar, { About, Banner, Carousel, Works } from "../components"
+import NavBar, { About, Banner, Carousel, Contact, Works } from "../components"
 import { Images } from "../types"
 
 export default function App(props: { images: Images[] }) {
@@ -13,6 +13,7 @@ export default function App(props: { images: Images[] }) {
             <Carousel data={bannerImgs} />
             <About />
             <Works />
+            <Contact />
         </div>
     )
 }
