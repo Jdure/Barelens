@@ -120,13 +120,14 @@ export function About() {
 
 
 // FIXME: Alignment is off on large and XL screen not taking the full width of the page like the other components
+//TODO: Add media queries from XL screen to LG
 export function Works() {
     return (
-        <div className="container">
+        <>
             <h2 className="text-3xl text-center font-body my-8">Featured</h2>
             <p className="text-6xl font-headings text-center">Projects</p>
-            <div className="flex my-12 flex-row flex-wrap">
-                <div className="flex flex-col basis-1/2 items-center space-y-2 mb-6">
+            <div className="flex my-12 flex-row justify-evenly">
+                <div className="flex flex-col items-center space-y-2 mb-6">
                     <Image
                         className="rounded-sm drop-shadow-2xl"
                         src={"https://source.unsplash.com/jbaF5N0uO0k/720x1280"}
@@ -139,7 +140,7 @@ export function Works() {
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit
                     </p>
                 </div>
-                <div className="flex flex-col basis-1/2 items-center space-y-2 mb-6">
+                <div className="flex flex-col items-center space-y-2 mb-6">
                     <Image
                         className="rounded-sm drop-shadow-2xl"
                         src={"https://source.unsplash.com/jbiInQGY8og/720x1280"}
@@ -152,7 +153,7 @@ export function Works() {
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit
                     </p>
                 </div>
-                <div className="flex flex-col basis-1/2 items-center space-y-2 mb-6">
+                <div className="flex flex-col items-center space-y-2 mb-6">
                     <Image
                         className="rounded-sm drop-shadow-2xl"
                         src={"https://source.unsplash.com/4Yv84VgQkRM/720x1280"}
@@ -165,7 +166,7 @@ export function Works() {
                         Lorem ipsum dolor sit, amet consectetur adipisicing elit
                     </p>
                 </div>
-                <div className="flex flex-col basis-1/2 items-center space-y-2 mb-6">
+                <div className="flex flex-col items-center space-y-2 mb-6">
                     <Image
                         className="rounded-sm drop-shadow-2xl"
                         src={"https://source.unsplash.com/rGHO4XSF0Qk/720x1280"}
@@ -179,7 +180,7 @@ export function Works() {
                     </p>
                 </div>
             </div>
-        </div>
+        </>
     )
 }
 
