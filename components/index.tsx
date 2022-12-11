@@ -118,6 +118,8 @@ export function About() {
     )
 }
 
+
+// FIXME: Alignment is off on large and XL screen not taking the full width of the page like the other components
 export function Works() {
     return (
         <div className="container">
