@@ -82,7 +82,7 @@ export function About() {
         <div className="flex flex-row mt-12 bg-gray-100">
             <div className="flex flex-col mb-4 items-center basis-1/2">
                 <h2 className="grow mb-8 text-5xl leading-normal lowercase">
-                    Capturing Life's Moment,
+                    Capturing Life&apos;s Moment,
                     <br /> One Frame at a Time
                 </h2>
                 <Image
@@ -104,9 +104,9 @@ export function About() {
                 <p className="text-lg text-left leading-relaxed">
                     Photography is the perfect way to capture and preserve
                     beautiful memories. From family portraits and special
-                    occasions to landscapes and wildlife, you'll be able to look
-                    back on these moments for years to come. So what are you
-                    waiting for? Let us capture your memories today
+                    occasions to landscapes and wildlife, you&apos;ll be able to
+                    look back on these moments for years to come. So what are
+                    you waiting for? Let us capture your memories today
                 </p>
                 <button className="bg-gray-400 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full">
                     Contact
@@ -122,7 +122,7 @@ export function Works() {
             <h2 className="text-3xl text-center font-body my-8">Featured</h2>
             <p className="text-6xl font-headings text-center">Projects</p>
             <div className="flex my-12 flex-row flex-wrap">
-                <div className="flex flex-col basis-1/2 items-center mb-6">
+                <div className="flex flex-col basis-1/2 items-center space-y-2 mb-6">
                     <Image
                         className="rounded-sm drop-shadow-2xl"
                         src={"https://source.unsplash.com/jbaF5N0uO0k/720x1280"}
@@ -130,13 +130,12 @@ export function Works() {
                         height={400}
                         alt="images"
                     />
-                    <p className="text-sm ">01 / Lorem</p>
+                    <p className="text-sm">01 / Lorem</p>
                     <p className="text-base">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit.
+                        Lorem ipsum dolor sit amet consectetur, adipisicing elit
                     </p>
                 </div>
-                <div className="flex flex-col basis-1/2 items-center mb-6">
+                <div className="flex flex-col basis-1/2 items-center space-y-2 mb-6">
                     <Image
                         className="rounded-sm drop-shadow-2xl"
                         src={"https://source.unsplash.com/jbiInQGY8og/720x1280"}
@@ -146,11 +145,10 @@ export function Works() {
                     />
                     <p className="text-sm">02 / Lorem</p>
                     <p className="text-base">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit
                     </p>
                 </div>
-                <div className="flex flex-col basis-1/2 items-center mb-6">
+                <div className="flex flex-col basis-1/2 items-center space-y-2 mb-6">
                     <Image
                         className="rounded-sm drop-shadow-2xl"
                         src={"https://source.unsplash.com/4Yv84VgQkRM/720x1280"}
@@ -160,11 +158,10 @@ export function Works() {
                     />
                     <p className="text-sm">03 / Lorem</p>
                     <p className="text-base">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit
                     </p>
                 </div>
-                <div className="flex flex-col basis-1/2 items-center mb-6">
+                <div className="flex flex-col basis-1/2 items-center space-y-2 mb-6">
                     <Image
                         className="rounded-sm drop-shadow-2xl"
                         src={"https://source.unsplash.com/rGHO4XSF0Qk/720x1280"}
@@ -174,8 +171,7 @@ export function Works() {
                     />
                     <p className="text-sm">04 / Lorem</p>
                     <p className="text-base">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit.
+                        Lorem ipsum dolor sit, amet consectetur adipisicing elit
                     </p>
                 </div>
             </div>
@@ -186,12 +182,31 @@ export function Works() {
 export function Contact() {
     return (
         <div className="flex flex-col bg-gray-100 h-64">
-            <div className="flex flex-col items-center space-y-12">
+            <div className="flex flex-col items-center space-y-14">
                 <h2 className="text-5xl pt-6 lowercase">
                     Let us capture your memories today!
                 </h2>
                 <p className="text-3xl">Barelens@example.com</p>
             </div>
         </div>
+    )
+}
+
+export function Footer() {
+    const today = new Date()
+    const year = today.getFullYear()
+
+    return (
+        <footer className="flex flex-row py-2 bg-gray-600">
+            <i className="text-white basis-1/4 py-2 px-4">Bare Lens Logo</i>
+            <div className="flex flex-row py-2 px-4 basis-1/2 justify-around">
+                <p className="text-white">Instagram</p>
+                <p className="text-white">Tik Tok</p>
+                <p className="text-white">Facebook</p>
+            </div>
+            <p className="text-white text-right py-2 px-4 basis-1/4">
+                &copy; {year} Bare Lens
+            </p>
+        </footer>
     )
 }
