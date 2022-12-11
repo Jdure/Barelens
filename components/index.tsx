@@ -205,13 +205,13 @@ export function Footer() {
         <footer className="flex flex-row py-2 bg-gray-600">
             <i className="text-white basis-1/4 py-2 px-4">Bare Lens Logo</i>
             <div className="flex flex-row py-2 px-4 basis-1/2 justify-between">
-                <p className="text-white">
+                <p className="text-white text-3xl">
                     <FaInstagram />
                 </p>
-                <p className="text-white">
+                <p className="text-white text-3xl">
                     <FaTiktok />
                 </p>
-                <p className="text-white">
+                <p className="text-white text-3xl">
                     <FaFacebookF />
                 </p>
             </div>
