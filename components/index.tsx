@@ -3,6 +3,8 @@ import React, { Key } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { EffectCards, Lazy } from "swiper"
 import "swiper/css"
+import { FaFacebookF, FaTiktok, FaInstagram } from "react-icons/fa"
+import { MdEmail } from "react-icons/md"
 import { Images } from "../types"
 import Image from "next/image"
 
@@ -186,7 +188,10 @@ export function Contact() {
                 <h2 className="text-5xl pt-6 lowercase">
                     Let us capture your memories today!
                 </h2>
-                <p className="text-3xl">Barelens@example.com</p>
+                <div className="flex row items-center gap-3">
+                    <MdEmail className="text-3xl" />
+                    <p className="text-3xl ">Barelens@example.com</p>
+                </div>
             </div>
         </div>
     )
@@ -199,10 +204,16 @@ export function Footer() {
     return (
         <footer className="flex flex-row py-2 bg-gray-600">
             <i className="text-white basis-1/4 py-2 px-4">Bare Lens Logo</i>
-            <div className="flex flex-row py-2 px-4 basis-1/2 justify-around">
-                <p className="text-white">Instagram</p>
-                <p className="text-white">Tik Tok</p>
-                <p className="text-white">Facebook</p>
+            <div className="flex flex-row py-2 px-4 basis-1/2 justify-between">
+                <p className="text-white">
+                    <FaInstagram />
+                </p>
+                <p className="text-white">
+                    <FaTiktok />
+                </p>
+                <p className="text-white">
+                    <FaFacebookF />
+                </p>
             </div>
             <p className="text-white text-right py-2 px-4 basis-1/4">
                 &copy; {year} Bare Lens
