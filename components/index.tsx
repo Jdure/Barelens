@@ -119,66 +119,40 @@ export function About() {
 }
 
 
-// FIXME: Alignment is off on large and XL screen not taking the full width of the page like the other components
-//TODO: Add media queries from XL screen to LG
 export function Works() {
+    const pictures = [
+        "jbaF5N0uO0k",
+        "jbiInQGY8og",
+        "4Yv84VgQkRM",
+        "rGHO4XSF0Qk",
+    ]
+
     return (
         <>
             <h2 className="text-3xl text-center font-body my-8">Featured</h2>
             <p className="text-6xl font-headings text-center">Projects</p>
-            <div className="flex my-12 flex-row justify-evenly">
-                <div className="flex flex-col items-center space-y-2 mb-6">
-                    <Image
-                        className="rounded-sm drop-shadow-2xl"
-                        src={"https://source.unsplash.com/jbaF5N0uO0k/720x1280"}
-                        width={400}
-                        height={400}
-                        alt="images"
-                    />
-                    <p className="text-sm">01 / Lorem</p>
-                    <p className="text-base">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit
-                    </p>
-                </div>
-                <div className="flex flex-col items-center space-y-2 mb-6">
-                    <Image
-                        className="rounded-sm drop-shadow-2xl"
-                        src={"https://source.unsplash.com/jbiInQGY8og/720x1280"}
-                        width={400}
-                        height={400}
-                        alt="images"
-                    />
-                    <p className="text-sm">02 / Lorem</p>
-                    <p className="text-base">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit
-                    </p>
-                </div>
-                <div className="flex flex-col items-center space-y-2 mb-6">
-                    <Image
-                        className="rounded-sm drop-shadow-2xl"
-                        src={"https://source.unsplash.com/4Yv84VgQkRM/720x1280"}
-                        width={400}
-                        height={400}
-                        alt="images"
-                    />
-                    <p className="text-sm">03 / Lorem</p>
-                    <p className="text-base">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit
-                    </p>
-                </div>
-                <div className="flex flex-col items-center space-y-2 mb-6">
-                    <Image
-                        className="rounded-sm drop-shadow-2xl"
-                        src={"https://source.unsplash.com/rGHO4XSF0Qk/720x1280"}
-                        width={400}
-                        height={400}
-                        alt="images"
-                    />
-                    <p className="text-sm">04 / Lorem</p>
-                    <p className="text-base">
-                        Lorem ipsum dolor sit, amet consectetur adipisicing elit
-                    </p>
-                </div>
+            <div className="flex my-12 flex-row md:justify-evenly md:flex-wrap 2xl:flex-nowrap">
+                {pictures.map((picture: String, idx: Key) => {
+                    return (
+                        <div
+                            key={idx}
+                            className="flex flex-col items-center space-y-2 mb-6 lg:basis-1/2 lg:grow"
+                        >
+                            <Image
+                                className="rounded-sm drop-shadow-2xl"
+                                src={`https://source.unsplash.com/${picture}/720x1280`}
+                                width={400}
+                                height={400}
+                                alt="images"
+                            />
+                            <p className="text-sm">{idx} / Lorem</p>
+                            <p className="text-base">
+                                Lorem ipsum dolor sit amet consectetur,
+                                adipisicing elit
+                            </p>
+                        </div>
+                    )
+                })}
             </div>
         </>
     )
