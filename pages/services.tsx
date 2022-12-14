@@ -1,28 +1,24 @@
-import React, { Key } from "react";
-import { GetStaticProps } from "next";
-import Image from "next/image";
-import NavBar, {
-    About,
-    Banner,
-    Carousel,
-    Contact,
-    Footer,
-    Works,
-} from "../components"
+import { GetStaticProps } from "next"
+import React, { Key } from "react"
+import NavBar, { Footer } from "../components"
 import { Images } from "../types"
+import Image from "next/image"
 
-export default function App(props: { images: Images[] }) {
-    const bannerImgs = props.images
+export default function Services(props: { images: Images[] }) {
+    const galleryImages = props.images
+    const nums = Array.from({ length: 3 }, (_, i) => i + 1)
     return (
-        <div>
+        <>
             <NavBar />
-            <Banner />
-            <Carousel data={bannerImgs} />
-            <About />
-            <Works />
-            <Contact />
+            <div className="flex flex-col py-6 px-6">
+                <h1 className="py-6 text-center font-body">
+                    Memories to last a lifetime
+                </h1>
+                <h2 className="py-3 text-center">Service Rates</h2>
+                <div className="flex flex-row"></div>
+            </div>
             <Footer />
-        </div>
+        </>
     )
 }
 
@@ -35,7 +31,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                expression: `folder=test AND tags:banner`,
+                expression: `folder=test`,
             }),
         }
     )

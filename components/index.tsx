@@ -21,8 +21,8 @@ export default function NavBar() {
                 <Link className="py-2 px-4 hover:underline" href={"/"}>
                     About
                 </Link>
-                <Link className="py-2 px-4 hover:underline" href={"/"}>
-                    Gallery
+                <Link className="py-2 px-4 hover:underline" href={"/services"}>
+                    Services
                 </Link>
                 <Link className="py-2 px-4 hover:underline" href={"/"}>
                     Contact
@@ -117,7 +117,6 @@ export function About() {
         </div>
     )
 }
-
 
 export function Works() {
     const pictures = [
