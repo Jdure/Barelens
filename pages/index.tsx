@@ -15,13 +15,11 @@ export default function App(props: { images: Images[] }) {
     const bannerImgs = props.images
     return (
         <div>
-            <NavBar />
             <Banner />
             <Carousel data={bannerImgs} />
             <About />
             <Works />
             <Contact />
-            <Footer />
         </div>
     )
 }

@@ -8,6 +8,14 @@ import { MdEmail } from "react-icons/md"
 import { Images } from "../types"
 import Image from "next/image"
 
+type ImageCardProps = {
+    imgPath: string
+    imgTitle: string
+    price: string
+    desc: string
+    plan: string | number
+}
+
 export default function NavBar() {
     const listStyle = "py-2 px-4 hover:underline"
 
@@ -178,7 +186,7 @@ export function Footer() {
     const year = today.getFullYear()
 
     return (
-        <footer className="flex flex-row py-2 bg-gray-600">
+        <footer className="bottom-0 w-full relative flex flex-row py-2 bg-gray-600">
             <i className="text-white basis-1/4 py-2 px-4">Bare Lens Logo</i>
             <div className="flex flex-row py-2 px-4 basis-1/2 justify-between">
                 <p className="text-white text-3xl">
@@ -195,5 +203,30 @@ export function Footer() {
                 &copy; {year} Bare Lens
             </p>
         </footer>
+    )
+}
+
+export function ImageCard({
+    imgPath,
+    imgTitle,
+    price,
+    desc,
+    plan,
+}: ImageCardProps) {
+    return (
+        <div className="relative h-auto w-72">
+            <Image
+                src={imgPath}
+                alt={imgTitle}
+                className="h-full w-full object-cover"
+                width={720}
+                height={1280}
+            />
+            <div className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold">
+                <p>{plan}</p>
+                <p>{desc}</p>
+                <p>{price}</p>
+            </div>
+        </div>
     )
 }

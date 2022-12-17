@@ -1,23 +1,30 @@
 import { GetStaticProps } from "next"
 import React, { Key } from "react"
-import NavBar, { Footer } from "../components"
+import NavBar, { Footer, ImageCard } from "../components"
 import { Images } from "../types"
 import Image from "next/image"
 
 export default function Services(props: { images: Images[] }) {
     const galleryImages = props.images
     const nums = Array.from({ length: 3 }, (_, i) => i + 1)
+    const img = "https://source.unsplash.com/Iz1ae_tdK6k/720x1280"
     return (
         <>
-            <NavBar />
-            <div className="flex flex-col py-6 px-6">
+            <div className="flex flex-col py-6 mb-24 px-6">
                 <h1 className="py-6 text-center font-body">
                     Memories to last a lifetime
                 </h1>
                 <h2 className="py-3 text-center">Service Rates</h2>
-                <div className="flex flex-row"></div>
+                <div className="flex flex-col">
+                    <ImageCard
+                        imgPath={img}
+                        imgTitle="img"
+                        plan="Plan 1"
+                        desc="lorem ipsum"
+                        price="500$"
+                    />
+                </div>
             </div>
-            <Footer />
         </>
     )
 }
