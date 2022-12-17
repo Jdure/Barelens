@@ -214,18 +214,18 @@ export function ImageCard({
     plan,
 }: ImageCardProps) {
     return (
-        <div className="relative h-auto w-72">
+        <div className="relative h-auto w-72 md:w-1/3 p-3 rounded-sm drop-shadow-md hover:drop-shadow-xl hover:grayscale ">
             <Image
                 src={imgPath}
                 alt={imgTitle}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover rounded-sm  "
                 width={720}
                 height={1280}
             />
-            <div className="absolute inset-0 flex items-center justify-center text-white text-xl font-bold">
-                <p>{plan}</p>
-                <p>{desc}</p>
-                <p>{price}</p>
+            <div className="absolute inset-0 rounded-sm flex flex-col items-center justify-evenly text-transparent ease-in duration-300 hover:text-white">
+                <h3 className="font-headings ">{plan}</h3>
+                <p className="text-xl font-extrabold  ">{desc}</p>
+                <p className="text-2xl font-extrabold">{price}</p>
             </div>
         </div>
     )

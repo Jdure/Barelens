@@ -15,13 +15,48 @@ export default function Services(props: { images: Images[] }) {
                     Memories to last a lifetime
                 </h1>
                 <h2 className="py-3 text-center">Service Rates</h2>
-                <div className="flex flex-col">
+                <div className="flex flex-wrap">
                     <ImageCard
-                        imgPath={img}
+                        imgPath="https://source.unsplash.com/BOHyxqepP9Y/720x1280"
                         imgTitle="img"
-                        plan="Plan 1"
-                        desc="lorem ipsum"
+                        plan="Headshot"
+                        desc="10 to 20 digitally edited images"
+                        price="300$"
+                    />
+                    <ImageCard
+                        imgPath="https://source.unsplash.com/Iz1ae_tdK6k/720x1280"
+                        imgTitle="img"
+                        plan="Couples"
+                        desc="10 to 20 digitally edited images"
+                        price="300$"
+                    />
+                    <ImageCard
+                        imgPath="https://source.unsplash.com/yj4kwA4h_Ms/720x1280"
+                        imgTitle="img"
+                        plan="Engagement"
+                        desc="30 to 50 digitally edited images"
                         price="500$"
+                    />
+                    <ImageCard
+                        imgPath="https://source.unsplash.com/Za03n9MIt4s/720x1280"
+                        imgTitle="img"
+                        plan="Families"
+                        desc="50 to 60 digitally edited images"
+                        price="500$"
+                    />
+                    <ImageCard
+                        imgPath="https://source.unsplash.com/rsGdX91zqiU/720x1280"
+                        imgTitle="img"
+                        plan="Maternity"
+                        desc="50 to 60 digitally edited images"
+                        price="600$"
+                    />
+                    <ImageCard
+                        imgPath="https://source.unsplash.com/p76UivR30oo/720x1280"
+                        imgTitle="img"
+                        plan="Newborn"
+                        desc="50 to 60 digitally edited images"
+                        price="600$"
                     />
                 </div>
             </div>
