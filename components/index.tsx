@@ -214,7 +214,7 @@ export function ImageCard({
     plan,
 }: ImageCardProps) {
     return (
-        <div className="relative h-auto w-72 md:w-1/3 p-3 rounded-sm drop-shadow-md hover:drop-shadow-xl hover:grayscale ">
+        <div className="relative h-auto w-full p-3 rounded-sm drop-shadow-md md:w-1/3 hover:drop-shadow-xl hover:grayscale ">
             <Image
                 src={imgPath}
                 alt={imgTitle}
