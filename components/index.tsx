@@ -164,7 +164,7 @@ export function Works() {
             <p className="text-3xl font-headings text-center sm:text-6xl">
                 Projects
             </p>
-            <div className="flex flex-wrap my-6 md:my-12 md:justify-evenly 2xl:flex-nowrap">
+            <div className="flex flex-wrap justify-center my-6 md:my-12 md:justify-evenly 2xl:flex-nowrap">
                 {pictures.map((picture: String, idx: Key) => {
                     return (
                         <div
@@ -231,7 +231,7 @@ export function Footer() {
                     <FaFacebookF />
                 </p>
             </div>
-            <p className="text-white text-xs sm:text-2xl text-right py-2 px-4 basis-1/4">
+            <p className="text-white text-xs sm:text-2xl text-center py-2 px-4 basis-1/4">
                 &copy; {year} Bare Lens
             </p>
         </footer>
