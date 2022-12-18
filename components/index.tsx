@@ -112,13 +112,13 @@ export function Carousel({ data }: any) {
 export function About() {
     return (
         <div className="flex flex-row mt-12 bg-gray-100">
-            <div className="flex flex-col mb-4 items-center basis-1/2">
-                <h2 className="grow mb-8 text-5xl leading-normal lowercase">
+            <div className="flex flex-col mb-4 sm:items-center basis-1/2">
+                <h2 className="text-md leading-normal lowercase text-center sm:grow sm:mb-8 sm:text-5xl ">
                     Capturing Life&apos;s Moment,
                     <br /> One Frame at a Time
                 </h2>
                 <Image
-                    className="rounded-sm drop-shadow-md"
+                    className="rounded-sm drop-shadow-md w-3/4 mx-auto sm:max-w-min sm:px-4"
                     src={"https://source.unsplash.com/vH96q7p1sgw/720x1280"}
                     width={400}
                     height={400}
@@ -127,20 +127,20 @@ export function About() {
             </div>
             <div className="flex flex-col basis-1/2 items-center justify-evenly">
                 <Image
-                    className="rounded-sm drop-shadow-md"
+                    className="rounded-sm drop-shadow-md w-4/6 mx-auto sm:max-w-min sm:px-4"
                     src={"https://source.unsplash.com/FXJRdoIhs_U/720x1280"}
                     width={300}
                     height={300}
                     alt="Portrait"
                 />
-                <p className="text-lg text-left leading-relaxed">
+                <p className="text-xs text-center sm:text-lg sm:text-left sm:leading-relaxed">
                     Photography is the perfect way to capture and preserve
                     beautiful memories. From family portraits and special
                     occasions to landscapes and wildlife, you&apos;ll be able to
                     look back on these moments for years to come. So what are
                     you waiting for? Let us capture your memories today
                 </p>
-                <button className="bg-gray-400 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded-full">
+                <button className="text-white text-sm w-11/12 h-max font-bold sm:py-2 sm:px-4 rounded-full bg-gray-400 hover:bg-gray-800">
                     Contact
                 </button>
             </div>
