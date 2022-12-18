@@ -16,23 +16,31 @@ type ImageCardProps = {
     plan: string | number
 }
 
+//TODO: Create Hamburger menu
+
 export default function NavBar() {
-    const listStyle = "py-2 px-4 hover:underline"
+    const listStyle = "text-sm sm:text-2xl py-2 hover:underline"
 
     return (
-        <div className="flex flex-row py-2">
-            <i className="w-1/4 py-2 px-4">Bare Lens Logo</i>
-            <div className="w-3/4 flex flex-row gap-20">
+        <div className="flex flex-row">
+            <Image
+                src="/images/Black logo - no background.svg"
+                width={50}
+                height={50}
+                alt="Bare Lens Photography"
+                className="w-24 sm:w-36 sm:mx-4"
+            />
+            <div className="w-3/4 flex flex-row justify-evenly">
                 <Link className={listStyle} href={"/"}>
                     Home
                 </Link>
-                <Link className="py-2 px-4 hover:underline" href={"/"}>
+                <Link className={listStyle} href={"/"}>
                     About
                 </Link>
-                <Link className="py-2 px-4 hover:underline" href={"/services"}>
+                <Link className={listStyle} href={"/services"}>
                     Services
                 </Link>
-                <Link className="py-2 px-4 hover:underline" href={"/"}>
+                <Link className={listStyle} href={"/"}>
                     Contact
                 </Link>
             </div>
@@ -42,13 +50,15 @@ export default function NavBar() {
 
 export function Banner() {
     return (
-        <div className="flex flex-col pt-28">
-            <h1 className="text-center pb-4 text-9xl">BARE LENS</h1>
+        <div className="flex flex-col pt-10 sm:pt-28">
+            <h1 className="text-center text-6xl sm:pb-4 sm:text-9xl">
+                BARE LENS
+            </h1>
             <hr className="my-2 mx-auto w-80 h-0 bg-gray-100" />
-            <div className="flex flex-row justify-evenly py-4">
+            <div className="text-xs text-center sm:justify-evenly sm:text-2xl flex flex-row py-4">
                 <p>Canadian Photographer</p>
                 <p>Portraits, Families & Weddings</p>
-                <p>2022, Limited Liability Company LLC</p>
+                <p>Limited Liability Company LLC</p>
             </div>
         </div>
     )
@@ -60,11 +70,23 @@ export function Carousel({ data }: any) {
             <Swiper
                 modules={[EffectCards, Lazy]}
                 spaceBetween={15}
-                slidesPerView={1.5}
+                slidesPerView={1.25}
                 centeredSlides={true}
                 lazy
                 loop
                 effect="cards"
+                breakpoints={{
+                    320: {
+                        slidesPerView: 1.1,
+                        centeredSlides: true,
+                        spaceBetween: 10,
+                    },
+                    480: {
+                        slidesPerView: 1.25,
+                        centeredSlides: true,
+                        spaceBetween: 15,
+                    },
+                }}
             >
                 {data.map((value: Images, idx: Key) => {
                     return (
