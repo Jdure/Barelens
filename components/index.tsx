@@ -158,9 +158,13 @@ export function Works() {
 
     return (
         <>
-            <h2 className="text-3xl text-center font-body my-8">Featured</h2>
-            <p className="text-6xl font-headings text-center">Projects</p>
-            <div className="flex my-12 flex-row md:justify-evenly md:flex-wrap 2xl:flex-nowrap">
+            <h2 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
+                Featured
+            </h2>
+            <p className="text-3xl font-headings text-center sm:text-6xl">
+                Projects
+            </p>
+            <div className="flex flex-row flex-wrap my-6 md:my-12 md:justify-evenly 2xl:flex-nowrap">
                 {pictures.map((picture: String, idx: Key) => {
                     return (
                         <div
@@ -168,14 +172,14 @@ export function Works() {
                             className="flex flex-col items-center space-y-2 mb-6 lg:basis-1/2 lg:grow"
                         >
                             <Image
-                                className="rounded-sm drop-shadow-2xl"
+                                className="rounded-sm drop-shadow-2xl w-3/4"
                                 src={`https://source.unsplash.com/${picture}/720x1280`}
                                 width={400}
                                 height={400}
                                 alt="images"
                             />
                             <p className="text-sm">{idx} / Lorem</p>
-                            <p className="text-base">
+                            <p className="text-sm sm:text-base">
                                 Lorem ipsum dolor sit amet consectetur,
                                 adipisicing elit
                             </p>
@@ -189,14 +193,14 @@ export function Works() {
 
 export function Contact() {
     return (
-        <div className="flex flex-col bg-gray-100 h-64">
-            <div className="flex flex-col items-center space-y-14">
-                <h2 className="text-5xl pt-6 lowercase">
-                    Let us capture your memories today!
+        <div className="flex flex-col bg-gray-100 h-36 sm:h-64">
+            <div className="flex flex-col items-center space-y-6 sm:space-y-14">
+                <h2 className="text-2xl sm:text-5xl pt-6 lowercase">
+                    Let's capture your memories today!
                 </h2>
-                <div className="flex row items-center gap-3">
+                <div className="flex items-center gap-3">
                     <MdEmail className="text-3xl" />
-                    <p className="text-3xl ">Barelens@example.com</p>
+                    <p className="text-xl sm:text-3xl ">Barelens@example.com</p>
                 </div>
             </div>
         </div>
