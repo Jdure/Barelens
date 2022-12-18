@@ -21,8 +21,8 @@ export default function NavBar() {
 
     return (
         <div className="flex flex-row py-2">
-            <i className="flex-grow py-2 px-4">Bare Lens Logo</i>
-            <div className="flex flex-row gap-20">
+            <i className="w-1/4 py-2 px-4">Bare Lens Logo</i>
+            <div className="w-3/4 flex flex-row gap-20">
                 <Link className={listStyle} href={"/"}>
                     Home
                 </Link>
@@ -218,7 +218,7 @@ export function ImageCard({
             <Image
                 src={imgPath}
                 alt={imgTitle}
-                className="h-full w-full object-cover rounded-sm  "
+                className="h-full w-full object-cover rounded-sm"
                 width={720}
                 height={1280}
             />
