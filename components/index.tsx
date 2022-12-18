@@ -133,14 +133,14 @@ export function About() {
                     height={300}
                     alt="Portrait"
                 />
-                <p className="text-xs text-center sm:text-lg sm:text-left sm:leading-relaxed">
+                <p className="text-sm text-center sm:text-lg sm:text-left sm:leading-relaxed">
                     Photography is the perfect way to capture and preserve
                     beautiful memories. From family portraits and special
                     occasions to landscapes and wildlife, you&apos;ll be able to
                     look back on these moments for years to come. So what are
                     you waiting for? Let us capture your memories today
                 </p>
-                <button className="text-white text-sm w-11/12 h-max font-bold sm:py-2 sm:px-4 rounded-full bg-gray-400 hover:bg-gray-800">
+                <button className="text-white text-sm w-11/12 h-max font-bold sm:w-1/2 sm:text-xl sm:py-2 sm:px-4 rounded-full bg-gray-400 hover:bg-gray-800">
                     Contact
                 </button>
             </div>
@@ -164,7 +164,7 @@ export function Works() {
             <p className="text-3xl font-headings text-center sm:text-6xl">
                 Projects
             </p>
-            <div className="flex flex-row flex-wrap my-6 md:my-12 md:justify-evenly 2xl:flex-nowrap">
+            <div className="flex flex-wrap my-6 md:my-12 md:justify-evenly 2xl:flex-nowrap">
                 {pictures.map((picture: String, idx: Key) => {
                     return (
                         <div
