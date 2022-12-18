@@ -10,11 +10,13 @@ export default function Services(props: { images: Images[] }) {
     const img = "https://source.unsplash.com/Iz1ae_tdK6k/720x1280"
     return (
         <>
-            <div className="flex flex-col py-6 mb-24 px-6">
-                <h1 className="py-6 text-center font-body">
+            <div className="flex flex-col py-6 mb-6 px-6">
+                <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
                     Memories to last a lifetime
                 </h1>
-                <h2 className="py-3 text-center">Service Rates</h2>
+                <p className="py-3 text-3xl font-headings text-center sm:text-6xl">
+                    Services & Rates
+                </p>
                 <div className="flex flex-wrap">
                     <ImageCard
                         imgPath="https://source.unsplash.com/BOHyxqepP9Y/720x1280"

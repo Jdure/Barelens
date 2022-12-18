@@ -196,7 +196,7 @@ export function Contact() {
         <div className="flex flex-col bg-gray-100 h-36 sm:h-64">
             <div className="flex flex-col items-center space-y-6 sm:space-y-14">
                 <h2 className="text-2xl sm:text-5xl pt-6 lowercase">
-                    Let's capture your memories today!
+                    Let&apos;s capture your memories today!
                 </h2>
                 <div className="flex items-center gap-3">
                     <MdEmail className="text-3xl" />
@@ -212,20 +212,26 @@ export function Footer() {
     const year = today.getFullYear()
 
     return (
-        <footer className="bottom-0 w-full relative flex flex-row py-2 bg-gray-600">
-            <i className="text-white basis-1/4 py-2 px-4">Bare Lens Logo</i>
-            <div className="flex flex-row py-2 px-4 basis-1/2 justify-between">
-                <p className="text-white text-3xl">
+        <footer className="bottom-0 w-full relative flex flex-row py-2 bg-gray-600 basis-1/4">
+            <Image
+                src="/images/White logo - no background.svg"
+                width={50}
+                height={50}
+                alt="Bare Lens Photography"
+                className="w-24 sm:w-36 sm:mx-4"
+            />
+            <div className="flex flex-row items-center justify-around sm:py-2 sm:px-4 basis-1/2">
+                <p className="text-white text-xl sm:text-3xl">
                     <FaInstagram />
                 </p>
-                <p className="text-white text-3xl">
+                <p className="text-white text-xl sm:text-3xl">
                     <FaTiktok />
                 </p>
-                <p className="text-white text-3xl">
+                <p className="text-white text-xl sm:text-3xl">
                     <FaFacebookF />
                 </p>
             </div>
-            <p className="text-white text-right py-2 px-4 basis-1/4">
+            <p className="text-white text-xs sm:text-2xl text-right py-2 px-4 basis-1/4">
                 &copy; {year} Bare Lens
             </p>
         </footer>
