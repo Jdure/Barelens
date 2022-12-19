@@ -1,10 +1,10 @@
 import Link from "next/link"
-import React, { Key } from "react"
+import React, { Key, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { EffectCards, Lazy } from "swiper"
 import "swiper/css"
 import { FaFacebookF, FaTiktok, FaInstagram } from "react-icons/fa"
-import { MdEmail } from "react-icons/md"
+import { MdEmail, MdMenu, MdClose } from "react-icons/md"
 import { Images } from "../types"
 import Image from "next/image"
 
@@ -16,35 +16,77 @@ type ImageCardProps = {
     plan: string | number
 }
 
-//TODO: Create Hamburger menu
+//TODO: Add animation to hamburger menu
+//TODO: Once a link or space is clicked close menu
 
 export default function NavBar() {
     const listStyle = "text-sm sm:text-2xl py-2 hover:underline"
+    const mobileListStyle = "w-full text-center py-6 hover:opacity-90"
+    const [isNavOpen, setIsNavOpen] = useState(false)
 
     return (
-        <div className="flex flex-row">
-            <Image
-                src="/images/Black logo - no background.svg"
-                width={50}
-                height={50}
-                alt="Bare Lens Photography"
-                className="w-24 sm:w-36 sm:mx-4"
-            />
-            <div className="w-3/4 flex flex-row justify-evenly">
-                <Link className={listStyle} href={"/"}>
-                    Home
-                </Link>
-                <Link className={listStyle} href={"/"}>
-                    About
-                </Link>
-                <Link className={listStyle} href={"/services"}>
-                    Services
-                </Link>
-                <Link className={listStyle} href={"/"}>
-                    Contact
-                </Link>
+        <>
+            <div className="flex flex-row py-2 px-2">
+                <Image
+                    src="/images/Black logo - no background.svg"
+                    width={50}
+                    height={50}
+                    alt="Bare Lens Photography"
+                    className="w-24 sm:w-36 sm:mx-4"
+                />
+                <div className="w-3/4 flex  justify-end sm:hidden">
+                    <MdMenu
+                        className="text-2xl"
+                        onClick={() => {
+                            setIsNavOpen((prev) => !prev)
+                        }}
+                    />
+                </div>
+
+                <div className="hidden sm:w-3/4 sm:flex sm:flex-row sm:justify-evenly">
+                    <Link className={listStyle} href={"/"}>
+                        Home
+                    </Link>
+                    <Link className={listStyle} href={"/"}>
+                        About
+                    </Link>
+                    <Link className={listStyle} href={"/services"}>
+                        Services
+                    </Link>
+                    <Link className={listStyle} href={"/"}>
+                        Contact
+                    </Link>
+                </div>
             </div>
-        </div>
+            <section
+                id="mobile-menu"
+                className={
+                    "absolute top-0 bg-gray-100 w-full text-4xl flex-col justify-center z-10 " +
+                    (isNavOpen ? "hidden" : "flex")
+                }
+            >
+                <MdClose
+                    className="self-end"
+                    onClick={() => {
+                        setIsNavOpen((prev) => !prev)
+                    }}
+                />
+                <nav className="flex flex-col min-h-screen">
+                    <Link className={mobileListStyle} href={"/"}>
+                        Home
+                    </Link>
+                    <Link className={mobileListStyle} href={"/"}>
+                        About
+                    </Link>
+                    <Link className={mobileListStyle} href={"/services"}>
+                        Services
+                    </Link>
+                    <Link className={mobileListStyle} href={"/"}>
+                        Contact
+                    </Link>
+                </nav>
+            </section>
+        </>
     )
 }
 
