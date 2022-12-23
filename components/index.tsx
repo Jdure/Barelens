@@ -18,12 +18,10 @@ type ImageCardProps = {
     plan: string | number
 }
 
-//TODO: Add animation to hamburger menu
-
 export default function NavBar() {
+    const [isNavOpen, setIsNavOpen] = useState(false)
     const listStyle = "text-sm sm:text-2xl py-2 hover:underline"
     const mobileListStyle = "w-full hover:bg-gray-100"
-    const [isNavOpen, setIsNavOpen] = useState(false)
 
     const menuRef = useRef<HTMLDivElement>(null)
     const toggleMenu = () => {
@@ -87,24 +85,30 @@ export default function NavBar() {
                 </div>
             </div>
             {/* Mobile Links  */}
-            {isNavOpen && (
-                <div className={"text-base bg-gray-50 px-3 block"}>
-                    <nav className="flex flex-col text-right space-y-2 sm:hidden">
-                        <Link className={mobileListStyle} href={"/"}>
-                            Home
-                        </Link>
-                        <Link className={mobileListStyle} href={"/"}>
-                            About
-                        </Link>
-                        <Link className={mobileListStyle} href={"/services"}>
-                            Services
-                        </Link>
-                        <Link className={mobileListStyle} href={"/"}>
-                            Contact
-                        </Link>
-                    </nav>
-                </div>
-            )}
+            <div
+                className={`text-base bg-gray-50 px-3 overflow-hidden transition-all ease-out duration-150 sm:hidden sm:transition-none ${
+                    isNavOpen ? "h-32" : "h-0"
+                }`}
+            >
+                <nav
+                    className={`flex flex-col text-right space-y-2 duration-300 ease-out sm:hidden sm:transition-none`}
+                >
+                    <Link className={mobileListStyle} href={"/"}>
+                        Home
+                    </Link>
+
+                    <Link className={mobileListStyle} href={"/"}>
+                        About
+                    </Link>
+
+                    <Link className={mobileListStyle} href={"/services"}>
+                        Services
+                    </Link>
+                    <Link className={mobileListStyle} href={"/"}>
+                        Contact
+                    </Link>
+                </nav>
+            </div>
         </>
     )
 }
