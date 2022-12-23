@@ -7,6 +7,8 @@ import { FaFacebookF, FaTiktok, FaInstagram } from "react-icons/fa"
 import { MdEmail, MdMenu, MdClose } from "react-icons/md"
 import { Images } from "../types"
 import Image from "next/image"
+import { useRef } from "react"
+import { useEffect } from "react"
 
 type ImageCardProps = {
     imgPath: string
@@ -17,12 +19,29 @@ type ImageCardProps = {
 }
 
 //TODO: Add animation to hamburger menu
-//TODO: Once a link or space is clicked close menu
 
 export default function NavBar() {
     const listStyle = "text-sm sm:text-2xl py-2 hover:underline"
     const mobileListStyle = "w-full text-center py-6 hover:opacity-90"
     const [isNavOpen, setIsNavOpen] = useState(false)
+
+    const menuRef = useRef<HTMLDivElement>(null)
+    const toggleMenu = () => {
+        setIsNavOpen(!isNavOpen)
+    }
+
+    const handleClickOutside = (event: any) => {
+        if (menuRef.current && !menuRef.current.contains(event.target)) {
+            setIsNavOpen(false)
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener("click", handleClickOutside, true)
+        return () => {
+            document.removeEventListener("click", handleClickOutside, true)
+        }
+    }, [])
 
     return (
         <>
@@ -34,15 +53,24 @@ export default function NavBar() {
                     alt="Bare Lens Photography"
                     className="w-24 sm:w-36 sm:mx-4"
                 />
-                <div className="w-3/4 flex  justify-end sm:hidden">
-                    <MdMenu
-                        className="text-2xl"
-                        onClick={() => {
-                            setIsNavOpen((prev) => !prev)
-                        }}
-                    />
+                {/* Mobile Menu Icon */}
+                <div
+                    ref={menuRef}
+                    className="w-3/4 flex py-2 justify-end sm:hidden"
+                >
+                    {isNavOpen ? (
+                        <MdClose
+                            className="text-2xl cursor-pointer"
+                            onClick={toggleMenu}
+                        />
+                    ) : (
+                        <MdMenu
+                            className="text-2xl cursor-pointer"
+                            onClick={toggleMenu}
+                        />
+                    )}
                 </div>
-
+                {/* Desktop Menu */}
                 <div className="hidden sm:w-3/4 sm:flex sm:flex-row sm:justify-evenly">
                     <Link className={listStyle} href={"/"}>
                         Home
@@ -58,34 +86,28 @@ export default function NavBar() {
                     </Link>
                 </div>
             </div>
-            <section
-                id="mobile-menu"
-                className={
-                    "absolute top-0 bg-gray-100 w-full text-4xl flex-col justify-center z-10 " +
-                    (isNavOpen ? "hidden" : "flex")
-                }
-            >
-                <MdClose
-                    className="self-end"
-                    onClick={() => {
-                        setIsNavOpen((prev) => !prev)
-                    }}
-                />
-                <nav className="flex flex-col min-h-screen">
-                    <Link className={mobileListStyle} href={"/"}>
-                        Home
-                    </Link>
-                    <Link className={mobileListStyle} href={"/"}>
-                        About
-                    </Link>
-                    <Link className={mobileListStyle} href={"/services"}>
-                        Services
-                    </Link>
-                    <Link className={mobileListStyle} href={"/"}>
-                        Contact
-                    </Link>
-                </nav>
-            </section>
+            {/* Mobile Links  */}
+            {isNavOpen && (
+                <div className={"text-base bg-gray-50 px-3 block"}>
+                    <nav className="flex flex-col text-right space-y-2 sm:hidden">
+                        <Link className="w-full hover:bg-gray-100" href={"/"}>
+                            Home
+                        </Link>
+                        <Link className="w-full hover:bg-gray-100" href={"/"}>
+                            About
+                        </Link>
+                        <Link
+                            className="w-full hover:bg-gray-100"
+                            href={"/services"}
+                        >
+                            Services
+                        </Link>
+                        <Link className="w-full hover:bg-gray-100" href={"/"}>
+                            Contact
+                        </Link>
+                    </nav>
+                </div>
+            )}
         </>
     )
 }
