@@ -22,7 +22,7 @@ type ImageCardProps = {
 
 export default function NavBar() {
     const listStyle = "text-sm sm:text-2xl py-2 hover:underline"
-    const mobileListStyle = "w-full text-center py-6 hover:opacity-90"
+    const mobileListStyle = "w-full hover:bg-gray-100"
     const [isNavOpen, setIsNavOpen] = useState(false)
 
     const menuRef = useRef<HTMLDivElement>(null)
@@ -90,19 +90,16 @@ export default function NavBar() {
             {isNavOpen && (
                 <div className={"text-base bg-gray-50 px-3 block"}>
                     <nav className="flex flex-col text-right space-y-2 sm:hidden">
-                        <Link className="w-full hover:bg-gray-100" href={"/"}>
+                        <Link className={mobileListStyle} href={"/"}>
                             Home
                         </Link>
-                        <Link className="w-full hover:bg-gray-100" href={"/"}>
+                        <Link className={mobileListStyle} href={"/"}>
                             About
                         </Link>
-                        <Link
-                            className="w-full hover:bg-gray-100"
-                            href={"/services"}
-                        >
+                        <Link className={mobileListStyle} href={"/services"}>
                             Services
                         </Link>
-                        <Link className="w-full hover:bg-gray-100" href={"/"}>
+                        <Link className={mobileListStyle} href={"/"}>
                             Contact
                         </Link>
                     </nav>
