@@ -303,6 +303,7 @@ export function Footer() {
     )
 }
 
+// TODO: WIP hover state (new font, word alignment)
 export function ImageCard({
     imgPath,
     imgTitle,
@@ -311,7 +312,7 @@ export function ImageCard({
     plan,
 }: ImageCardProps) {
     return (
-        <div className="relative h-auto w-full p-3 rounded-sm drop-shadow-md md:w-1/3 hover:drop-shadow-xl hover:grayscale ">
+        <div className="relative h-auto w-full p-3 rounded-sm drop-shadow-md md:w-1/3 hover:drop-shadow-xl hover:grayscale">
             <Image
                 src={imgPath}
                 alt={imgTitle}
@@ -319,9 +320,9 @@ export function ImageCard({
                 width={720}
                 height={1280}
             />
-            <div className="absolute inset-0 rounded-sm flex flex-col items-center justify-evenly text-transparent ease-in duration-300 hover:text-white">
-                <h3 className="font-headings ">{plan}</h3>
-                <p className="text-xl font-extrabold  ">{desc}</p>
+            <div className="absolute inset-0 sm:inset-4  rounded-sm flex flex-col items-center justify-center sm:justify-end text-transparent ease-in duration-300 hover:text-white">
+                <h3 className="font-headings">{plan}</h3>
+                <p className="text-xl font-extrabold sm:text-2xl">{desc}</p>
                 <p className="text-2xl font-extrabold">{price}</p>
             </div>
         </div>
