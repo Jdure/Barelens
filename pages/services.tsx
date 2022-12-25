@@ -1,8 +1,7 @@
 import { GetStaticProps } from "next"
-import React, { Key } from "react"
-import NavBar, { Footer, ImageCard } from "../components"
+import React from "react"
+import { ImageCard } from "../components"
 import { Images } from "../types"
-import Image from "next/image"
 
 export default function Services(props: { images: Images[] }) {
     const galleryImages = props.images

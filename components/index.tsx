@@ -69,11 +69,11 @@ export default function NavBar() {
                     )}
                 </div>
                 {/* Desktop Menu */}
-                <div className="hidden sm:w-3/4 sm:flex sm:flex-row sm:justify-evenly">
+                <div className="hidden sm:items-center sm:w-3/4 sm:flex sm:flex-row sm:justify-evenly">
                     <Link className={listStyle} href={"/"}>
                         Home
                     </Link>
-                    <Link className={listStyle} href={"/"}>
+                    <Link className={listStyle} href={"/about"}>
                         About
                     </Link>
                     <Link className={listStyle} href={"/services"}>
@@ -97,7 +97,7 @@ export default function NavBar() {
                         Home
                     </Link>
 
-                    <Link className={mobileListStyle} href={"/"}>
+                    <Link className={mobileListStyle} href={"/about"}>
                         About
                     </Link>
 
@@ -277,15 +277,17 @@ export function Footer() {
     const year = today.getFullYear()
 
     return (
-        <footer className="bottom-0 w-full relative flex flex-row py-2 bg-gray-600 basis-1/4">
-            <Image
-                src="/images/White logo - no background.svg"
-                width={50}
-                height={50}
-                alt="Bare Lens Photography"
-                className="w-24 sm:w-36 sm:mx-4"
-            />
-            <div className="flex flex-row items-center justify-around sm:py-2 sm:px-4 basis-1/2">
+        <footer className="bottom-0 w-full relative flex py-2 bg-gray-600">
+            <div className="basis-1/4">
+                <Image
+                    src="/images/White logo - no background.svg"
+                    width={50}
+                    height={50}
+                    alt="Bare Lens Photography"
+                    className="w-auto pl-1 sm:w-36 sm:mx-4"
+                />
+            </div>
+            <div className="flex items-center justify-around sm:justify-between sm:py-2 sm:px-4 basis-1/2">
                 <p className="text-white text-xl sm:text-3xl">
                     <FaInstagram />
                 </p>
@@ -296,7 +298,7 @@ export function Footer() {
                     <FaFacebookF />
                 </p>
             </div>
-            <p className="text-white text-xs sm:text-2xl text-center py-2 px-4 basis-1/4">
+            <p className="text-white text-xs text-center  py-2 px-4 basis-1/4 sm:text-2xl sm:text-right">
                 &copy; {year} Bare Lens
             </p>
         </footer>
