@@ -79,7 +79,7 @@ export default function NavBar() {
                     <Link className={listStyle} href={"/services"}>
                         Services
                     </Link>
-                    <Link className={listStyle} href={"/"}>
+                    <Link className={listStyle} href={"/contact"}>
                         Contact
                     </Link>
                 </div>
@@ -104,7 +104,7 @@ export default function NavBar() {
                     <Link className={mobileListStyle} href={"/services"}>
                         Services
                     </Link>
-                    <Link className={mobileListStyle} href={"/"}>
+                    <Link className={mobileListStyle} href={"/contact"}>
                         Contact
                     </Link>
                 </nav>

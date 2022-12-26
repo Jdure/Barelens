@@ -1,7 +1,7 @@
 import React from "react"
 import Image from "next/image"
 
-export default function About() {
+export default function AboutPage() {
     return (
         <>
             <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">

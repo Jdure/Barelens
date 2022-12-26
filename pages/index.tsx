@@ -11,7 +11,7 @@ import NavBar, {
 } from "../components"
 import { Images } from "../types"
 
-export default function App(props: { images: Images[] }) {
+export default function HomePage(props: { images: Images[] }) {
     const bannerImgs = props.images
     return (
         <div>

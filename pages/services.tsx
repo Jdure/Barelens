@@ -3,7 +3,7 @@ import React from "react"
 import { ImageCard } from "../components"
 import { Images } from "../types"
 
-export default function Services(props: { images: Images[] }) {
+export default function ServicesPage(props: { images: Images[] }) {
     const galleryImages = props.images
     const nums = Array.from({ length: 3 }, (_, i) => i + 1)
     const img = "https://source.unsplash.com/Iz1ae_tdK6k/720x1280"
