@@ -10,7 +10,7 @@ export default function About() {
             <p className="py-4 text-2xl font-headings text-center sm:text-5xl">
                 Capturing the beauty of life&apos;s moments
             </p>
-            <div className="flex flex-col pb-4 sm:pb-0 sm:py-12 sm:flex-row">
+            <div className="flex flex-col pb-16 sm:pb-0 sm:py-12 sm:flex-row">
                 <div className="flex flex-col px-6 py-4 sm:basis-1/2">
                     <Image
                         src={
