@@ -176,9 +176,9 @@ export function Carousel({ data }: any) {
 
 export function About() {
     return (
-        <div className="flex flex-row mt-12 bg-gray-100">
+        <div className="flex flex-row mt-12 py-4 bg-gray-100">
             <div className="flex flex-col mb-4 sm:items-center basis-1/2">
-                <h2 className="text-md leading-normal lowercase text-center sm:grow sm:mb-8 sm:text-5xl ">
+                <h2 className="text-md leading-normal lowercase text-center text-2xl sm:grow sm:mb-8 sm:text-5xl ">
                     Capturing Life&apos;s Moment,
                     <br /> One Frame at a Time
                 </h2>
@@ -200,10 +200,10 @@ export function About() {
                 />
                 <p className="text-sm text-center sm:text-lg sm:text-left sm:leading-relaxed">
                     Photography is the perfect way to capture and preserve
-                    beautiful memories. From family portraits and special
-                    occasions to landscapes and wildlife, you&apos;ll be able to
-                    look back on these moments for years to come. So what are
-                    you waiting for? Let us capture your memories today
+                    beautiful memories. From family portraits to special
+                    occasions, you&apos;ll be able to look back on these moments
+                    for years to come. So what are you waiting for? Let us
+                    capture your memories today
                 </p>
                 <button className="text-white text-sm w-11/12 h-max font-bold sm:w-1/2 sm:text-xl sm:py-2 sm:px-4 rounded-full bg-gray-400 hover:bg-gray-800">
                     Contact
@@ -226,7 +226,7 @@ export function Works() {
             <h2 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
                 Featured
             </h2>
-            <p className="text-3xl font-headings text-center sm:text-6xl">
+            <p className="text-2xl font-headings text-center sm:text-6xl">
                 Projects
             </p>
             <div className="flex flex-wrap justify-center my-6 md:my-12 md:justify-evenly 2xl:flex-nowrap">

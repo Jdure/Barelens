@@ -10,7 +10,7 @@ export default function Layout({ children }: LayoutProps) {
     return (
         <>
             <NavBar />
-            <main className="min-h-screen">{children}</main>
+            <main className="min-h-min sm:min-h-screen">{children}</main>
             <Footer />
         </>
     )
