@@ -10,20 +10,20 @@ export default function AboutPage() {
             <p className="py-4 mx-2 text-2xl font-headings text-center sm:text-5xl">
                 Capturing the beauty of life&apos;s moments
             </p>
-            <div className="flex flex-col pb-16 sm:pb-0 sm:py-12 sm:flex-row sm:h-screen">
-                <div className="flex flex-col px-6 py-4 sm:basis-1/2">
+            <div className="flex flex-col pb-16 sm:pb-0 sm:py-12 sm:flex-row sm:h-fit">
+                <div className="flex flex-col px-6 py-4 sm:basis-1/2 items-center">
                     <Image
                         src={
-                            "https://source.unsplash.com//nZ2ckk2-FNA/1280x720"
+                            "https://source.unsplash.com//LBMZaSrZMD8/720x1280"
                         }
-                        width={1280}
-                        height={720}
+                        width={720}
+                        height={1280}
                         alt="profile image"
-                        className="py-2 rounded-lg drop-shadow-lg"
+                        className="py-2 rounded-lg drop-shadow-lg w-2/3 sm:w-3/5"
                     />
                 </div>
-                <div className="flex flex-col sm:justify-start sm:basis-1/2">
-                    <p className="py-2 text-2xl font-headings text-center mx-6 sm:pb-8 sm:text-4xl sm:text-justify">
+                <div className="flex flex-col sm:justify-center sm:basis-1/2">
+                    <p className="py-2 text-2xl font-headings text-center mx-6 sm:pb-8 sm:text-4xl sm:text-start">
                         Hi, I&apos;m Beta!
                     </p>
                     <p className="text-center text-lg leading-relaxed break-words mx-6 sm:text-2xl sm:text-justify">
