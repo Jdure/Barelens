@@ -120,9 +120,16 @@ export default function NavBar() {
 export function Banner() {
     return (
         <div className="flex flex-col pt-10 sm:pt-28">
-            <h1 className="text-center text-6xl sm:pb-4 sm:text-9xl">
+            {/* <h1 className="text-center text-6xl sm:pb-4 sm:text-9xl">
                 BARE LENS
-            </h1>
+            </h1> */}
+            <Image
+                src="/images/Black logo - no background.svg"
+                width={50}
+                height={50}
+                alt="Bare Lens Photography"
+                className="w-2/3 mx-auto text-6xl sm:pb-4"
+            />
             <hr className="my-2 mx-auto w-80 h-0 bg-gray-100" />
             <div className="text-xs text-center sm:justify-evenly sm:text-2xl flex flex-row py-4">
                 <p>Canadian Photographer</p>

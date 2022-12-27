@@ -7,7 +7,7 @@ export default function AboutPage() {
             <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
                 Meet the artist behind the lens
             </h1>
-            <p className="py-4 mx-2 text-2xl font-headings text-center sm:text-5xl">
+            <p className="py-3 text-xl font-headings text-center sm:text-6xl">
                 Capturing the beauty of life&apos;s moments
             </p>
             <div className="flex flex-col pb-16 sm:pb-0 sm:py-12 sm:flex-row sm:h-fit">

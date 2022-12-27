@@ -13,7 +13,7 @@ export default function ServicesPage(props: { images: Images[] }) {
                 <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
                     Memories to last a lifetime
                 </h1>
-                <p className="py-3 text-2xl font-headings text-center sm:text-6xl">
+                <p className="py-3 text-xl font-headings text-center sm:text-6xl">
                     Services & Rates
                 </p>
                 <div className="flex flex-wrap">

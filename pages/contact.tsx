@@ -9,7 +9,7 @@ export default function ContactPage() {
             <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
                 Let&apos;s work together
             </h1>
-            <p className="py-4 mx-2 text-2xl font-headings text-center sm:text-5xl">
+            <p className="py-3 text-xl font-headings text-center sm:text-6xl">
                 Connect with us and bring your vision to life
             </p>
             <div className="flex flex-col sm:flex-row pt-2 sm:pt-12 sm:h-fit">
