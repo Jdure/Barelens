@@ -10,7 +10,7 @@ export default function AboutPage() {
             <p className="py-4 mx-2 text-2xl font-headings text-center sm:text-5xl">
                 Capturing the beauty of life&apos;s moments
             </p>
-            <div className="flex flex-col pb-16 sm:pb-0 sm:py-12 sm:flex-row">
+            <div className="flex flex-col pb-16 sm:pb-0 sm:py-12 sm:flex-row sm:h-screen">
                 <div className="flex flex-col px-6 py-4 sm:basis-1/2">
                     <Image
                         src={
@@ -22,7 +22,7 @@ export default function AboutPage() {
                         className="py-2 rounded-lg drop-shadow-lg"
                     />
                 </div>
-                <div className="flex flex-col sm:justify-center sm:basis-1/2">
+                <div className="flex flex-col sm:justify-start sm:basis-1/2">
                     <p className="py-2 text-2xl font-headings text-center mx-6 sm:pb-8 sm:text-4xl sm:text-justify">
                         Hi, I&apos;m Beta!
                     </p>

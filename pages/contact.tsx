@@ -1,4 +1,6 @@
 import React from "react"
+import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md"
+import { FaInstagram } from "react-icons/fa"
 import Image from "next/image"
 
 export default function ContactPage() {
@@ -10,19 +12,48 @@ export default function ContactPage() {
             <p className="py-4 mx-2 text-2xl font-headings text-center sm:text-5xl">
                 Connect with us and bring your vision to life
             </p>
-            <div className="flex flex-col">
-                <div className="flex flex-col basis-1/2 items-center justify-center">
+            <div className="flex flex-col sm:flex-row pt-2 sm:pt-12 sm:h-fit">
+                <div className="flex flex-col bg-gray-100 items-center py-6 sm:basis-1/2">
+                    <h2 className="text-xl text-black py-1 sm:text-4xl">
+                        Contact Information
+                    </h2>
+                    <p className="text-base text-black py-1 sm:text-2xl sm:text-center sm:py-4">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit
+                    </p>
+                    <div className="flex flex-col justify-between pt-4 pb-4 space-y-4 sm:space-y-8">
+                        <div className="flex flex-row items-center">
+                            <FaInstagram className="text-black text-lg sm:text-xl" />
+                            <p className="text-lg px-2 sm:text-2xl">
+                                @barelensphotography
+                            </p>
+                        </div>
+                        <div className="flex flex-row items-center">
+                            <MdOutlineEmail className="text-black text-lg sm:text-xl" />
+                            <p className="text-lg px-2 sm:text-2xl">
+                                <a href="mailto:barelens@example.com">
+                                    barelens@example.com
+                                </a>
+                            </p>
+                        </div>
+                        <div className="flex flex-row items-center">
+                            <MdOutlineLocationOn className="text-black text-lg sm:text-xl" />
+                            <p className="text-lg px-2 sm:text-2xl">
+                                Ottawa, Canada
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div className="flex h-full w-full grayscale sm:basis-1/2">
                     <Image
                         src={
-                            "https://source.unsplash.com//Zf14BckA1JA/1280x720"
+                            "https://source.unsplash.com/UWblg2i6Blw/1280x1280"
                         }
-                        width={720}
-                        height={1280}
+                        width="1280"
+                        height="1280"
                         alt="contact image"
                         className="object-cover"
                     />
                 </div>
-                <div className="flex flex-col basis-1/2">Contact</div>
             </div>
         </>
     )

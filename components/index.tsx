@@ -3,8 +3,12 @@ import React, { Key, useState } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
 import { EffectCards, Lazy } from "swiper"
 import "swiper/css"
-import { FaFacebookF, FaTiktok, FaInstagram } from "react-icons/fa"
-import { MdEmail, MdMenu, MdClose } from "react-icons/md"
+import {
+    TbBrandInstagram,
+    TbBrandTiktok,
+    TbBrandFacebook,
+} from "react-icons/tb"
+import { MdOutlineEmail, MdMenu, MdClose } from "react-icons/md"
 import { Images } from "../types"
 import Image from "next/image"
 import { useRef } from "react"
@@ -190,23 +194,25 @@ export function About() {
                     alt="Jane Doe"
                 />
             </div>
-            <div className="flex flex-col basis-1/2 items-center justify-evenly">
+            <div className="flex flex-col basis-1/2 items-center justify-between">
                 <Image
-                    className="rounded-sm drop-shadow-md w-4/6 mx-auto sm:max-w-min sm:px-4"
+                    className="rounded-sm drop-shadow-md w-3/5 mx-auto sm:max-w-min sm:px-4"
                     src={"https://source.unsplash.com/FXJRdoIhs_U/720x1280"}
                     width={300}
                     height={300}
                     alt="Portrait"
                 />
-                <p className="text-sm text-center sm:text-lg sm:text-left sm:leading-relaxed">
+                <p className="text-sm text-center sm:text-lg sm:text-justify sm:leading-relaxed sm:mx-4">
                     Photography is the perfect way to capture and preserve
                     beautiful memories. From family portraits to special
                     occasions, you&apos;ll be able to look back on these moments
-                    for years to come. So what are you waiting for? Let us
-                    capture your memories today
+                    for years to come. So what are you waiting for?{" "}
+                </p>
+                <p className="text-sm text-center sm:text-lg sm:leading-relaxed sm:mx-auto">
+                    Let&apos;s capture your memories today!
                 </p>
                 <button className="text-white text-sm w-11/12 h-max font-bold sm:w-1/2 sm:text-xl sm:py-2 sm:px-4 rounded-full bg-gray-400 hover:bg-gray-800">
-                    Contact
+                    <Link href={"/contact"}>Contact</Link>
                 </button>
             </div>
         </div>
@@ -260,11 +266,11 @@ export function Contact() {
     return (
         <div className="flex flex-col bg-gray-100 h-36 sm:h-64">
             <div className="flex flex-col items-center space-y-6 sm:space-y-14">
-                <h2 className="text-2xl sm:text-5xl pt-6 lowercase">
+                <h2 className="text-xl sm:text-5xl pt-6 lowercase">
                     Let&apos;s capture your memories today!
                 </h2>
-                <div className="flex items-center gap-3">
-                    <MdEmail className="text-3xl" />
+                <div className="flex items-center space-x-2">
+                    <MdOutlineEmail className="text-xl sm:text-3xl" />
                     <p className="text-xl sm:text-3xl ">Barelens@example.com</p>
                 </div>
             </div>
@@ -288,15 +294,11 @@ export function Footer() {
                 />
             </div>
             <div className="flex items-center justify-around sm:justify-between sm:py-2 sm:px-4 basis-1/2">
-                <p className="text-white text-xl sm:text-3xl">
-                    <FaInstagram />
-                </p>
-                <p className="text-white text-xl sm:text-3xl">
-                    <FaTiktok />
-                </p>
-                <p className="text-white text-xl sm:text-3xl">
-                    <FaFacebookF />
-                </p>
+                <TbBrandInstagram className="text-white text-xl sm:text-3xl" />
+
+                <TbBrandTiktok className="text-white text-xl sm:text-3xl" />
+
+                <TbBrandFacebook className="text-white text-xl sm:text-3xl" />
             </div>
             <p className="text-white text-xs text-center  py-2 px-4 basis-1/4 sm:text-2xl sm:text-right">
                 &copy; {year} Bare Lens
@@ -328,4 +330,8 @@ export function ImageCard({
             </div>
         </div>
     )
+}
+
+export function Form() {
+    return <div id="contact-form"></div>
 }
