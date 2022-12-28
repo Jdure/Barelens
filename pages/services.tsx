@@ -2,11 +2,11 @@ import { GetStaticProps } from "next"
 import React from "react"
 import { ImageCard } from "../components"
 import { Images } from "../types"
+import { createClient } from "contentful"
 
-export default function ServicesPage(props: { images: Images[] }) {
-    const galleryImages = props.images
-    const nums = Array.from({ length: 3 }, (_, i) => i + 1)
-    const img = "https://source.unsplash.com/Iz1ae_tdK6k/720x1280"
+export default function ServicesPage({ services }: any) {
+    const serviceItems = services
+    console.log(services)
     return (
         <>
             <div className="flex flex-col py-6 mb-6 px-6">
@@ -66,44 +66,16 @@ export default function ServicesPage(props: { images: Images[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const res = await fetch(
-        `https://${process.env.CLOUDINARY_API_KEY}:${process.env.CLOUDINARY_API_SECRET}@api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/search`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                expression: `folder=test`,
-            }),
-        }
-    )
-    const { resources } = await res.json()
+    const client = createClient({
+        space: process.env.CONTENTFUL_SPACE_ID || "",
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN || "",
+    })
 
-    const images: Images[] = resources.map(
-        (value: {
-            public_id: string
-            filename: string
-            secure_url: string
-            width: Number
-            height: Number
-            created_at: Date
-        }) => {
-            const { created_at, width, height } = value
-            return {
-                id: value.public_id,
-                title: value.filename,
-                image: value.secure_url,
-                created_at,
-                width,
-                height,
-            }
-        }
-    )
+    const res = await client.getEntries({ content_type: "services" })
 
     return {
         props: {
-            images,
+            services: res.items,
         },
     }
 }
