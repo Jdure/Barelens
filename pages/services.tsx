@@ -3,9 +3,11 @@ import React from "react"
 import { ImageCard } from "../components"
 import { Images } from "../types"
 import { createClient } from "contentful"
+import { IServices, IServicesFields } from "../types/contentful"
 
-export default function ServicesPage({ services }: any) {
-    const serviceItems = services
+export default function ServicesPage(services: IServices) {
+    const serviceItems = services.fields
+
     console.log(services)
     return (
         <>
