@@ -120,9 +120,6 @@ export default function NavBar() {
 export function Banner() {
     return (
         <div className="flex flex-col pt-10 sm:pt-28">
-            {/* <h1 className="text-center text-6xl sm:pb-4 sm:text-9xl">
-                BARE LENS
-            </h1> */}
             <Image
                 src="/images/Black logo - no background.svg"
                 width={50}
@@ -330,9 +327,11 @@ export function ImageCard({
                 width={720}
                 height={1280}
             />
-            <div className="absolute inset-0 m-3 rounded-sm flex flex-col items-center justify-center text-transparent ease-in duration-300 sm:justify-end sm:m-0 sm:inset-4 hover:text-white hover:backdrop-brightness-50">
+            <div className="absolute inset-0 m-3 rounded-sm flex flex-col items-center justify-around text-transparent ease-in duration-300 sm:m-0 sm:inset-4 hover:text-white hover:backdrop-brightness-50">
                 <h3 className="font-headings">{plan}</h3>
-                <p className="text-xl font-extrabold sm:text-2xl">{desc}</p>
+                <p className="text-base text-center font-extrabold sm:text-xl">
+                    {desc}
+                </p>
                 <p className="text-2xl font-extrabold">{price}</p>
             </div>
         </div>

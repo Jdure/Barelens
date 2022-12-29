@@ -9,8 +9,6 @@ interface ServicePageProps {
 }
 
 export default function ServicesPage({ services }: ServicePageProps) {
-    console.log(services)
-
     return (
         <>
             <div className="flex flex-col py-6 mb-6 px-6">
@@ -30,7 +28,7 @@ export default function ServicesPage({ services }: ServicePageProps) {
                             imgTitle={field.title}
                             plan={field.title}
                             desc={field.description}
-                            price={field.cost.toString()}
+                            price={field.cost.toString() + "$"}
                         />
                     ))}
                 </div>
