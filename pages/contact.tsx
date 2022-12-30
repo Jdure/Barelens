@@ -18,7 +18,7 @@ export default function ContactPage() {
                     <h2 className="text-xl text-black py-1 sm:text-4xl">
                         Contact Information
                     </h2>
-                    <p className="text-base text-black py-1 sm:text-2xl sm:text-center sm:py-4">
+                    <p className="text-base text-black py-1 sm:text-xl sm:text-center sm:py-4">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit
                     </p>
                     <div className="flex flex-col justify-between pt-4 pb-4 space-y-4 sm:space-y-8">

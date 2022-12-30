@@ -345,19 +345,21 @@ const defaultDate = date.toLocaleDateString("en-CA")
 return (
     <div id="contact-form" className="container">
         <div className="bg-white rounded-md p-8 flex flex-col items-center justify-center">
-            <h2 className="text-black text-xl mb-4">Book A Session</h2>
-            <p className="leading-relaxed mb-3 text-black text-sm">
+            <h2 className="text-xl text-black py-1 sm:text-4xl mb-4">
+                Book A Session
+            </h2>
+            <p className="leading-relaxed mb-3 text-black text-sm sm:text-xl">
                 Lorem ipsum, dolor sit amet consectetur elit
             </p>
-            <form className="w-full min-h-fit flex flex-col items-center justify-between space-y-3 sm:space-y-4 sm:pt-4">
+            <form className="w-full min-h-fit flex flex-col items-center justify-between space-y-3 sm:space-y-6 sm:pt-4">
                 <input
-                    className="text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
+                    className="my-2 text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                     type="text"
                     placeholder="Your name"
                     aria-label="Full name"
                 />
                 <input
-                    className="text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
+                    className="my-2 text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                     type="email"
                     placeholder="E-mail address"
                     aria-label="E-mail address"
