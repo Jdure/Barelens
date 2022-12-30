@@ -2,6 +2,7 @@ import React from "react"
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md"
 import { FaInstagram } from "react-icons/fa"
 import Image from "next/image"
+import { Form } from "../components"
 
 export default function ContactPage() {
     return (
@@ -44,7 +45,7 @@ export default function ContactPage() {
                     </div>
                 </div>
                 <div className="flex h-full w-full grayscale sm:basis-1/2">
-                    <Image
+                    {/* <Image
                         src={
                             "https://source.unsplash.com/UWblg2i6Blw/1280x1280"
                         }
@@ -52,7 +53,9 @@ export default function ContactPage() {
                         height="1280"
                         alt="contact image"
                         className="object-cover"
-                    />
+                    /> */}
+
+                    <Form />
                 </div>
             </div>
         </>

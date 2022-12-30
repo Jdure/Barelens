@@ -339,5 +339,61 @@ export function ImageCard({
 }
 
 export function Form() {
-    return <div id="contact-form"></div>
+const date = new Date()
+const defaultDate = date.toLocaleDateString("en-CA")
+
+return (
+    <div id="contact-form" className="container">
+        <div className="bg-white rounded-md p-8 flex flex-col items-center justify-center">
+            <h2 className="text-black text-xl mb-4">Book A Session</h2>
+            <p className="leading-relaxed mb-3 text-black text-sm">
+                Lorem ipsum, dolor sit amet consectetur elit
+            </p>
+            <form className="w-full min-h-fit flex flex-col items-center justify-between space-y-3 sm:space-y-4 sm:pt-4">
+                <input
+                    className="text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
+                    type="text"
+                    placeholder="Your name"
+                    aria-label="Full name"
+                />
+                <input
+                    className="text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
+                    type="email"
+                    placeholder="E-mail address"
+                    aria-label="E-mail address"
+                />
+                <label htmlFor="occasionTypes" className="text-lg">
+                    Choose service
+                </label>
+
+                <select
+                    name="occasions"
+                    id="occasionTypes"
+                    className="text-lg text-black relative w-3/4 bg-white border border-gray-300 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
+                >
+                    <option value="portrait">Portrait</option>
+                    <option value="couple">Couple</option>
+                    <option value="engagement">Engagement</option>
+                    <option value="wedding">Wedding</option>
+                    <option value="family">Family</option>
+                    <option value="maternity">Maternity</option>
+                    <option value="newborn">Newborn</option>
+                </select>
+                <label htmlFor="eventDate" className="text-lg">
+                    Select date
+                </label>
+                <input
+                    className="text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
+                    type="date"
+                    id="eventDate"
+                    name="Event date"
+                    value={defaultDate}
+                ></input>
+                <button className="text-white text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-full bg-gray-400 hover:bg-gray-800">
+                    Submit
+                </button>
+            </form>
+        </div>
+    </div>
+)
 }
