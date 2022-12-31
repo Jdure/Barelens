@@ -360,8 +360,28 @@ const handleChange = (
     }))
 }
 
+const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+    evt.preventDefault()
+    setSubmitted(true)
+    console.log(values)
+    setTimeout(() => {
+        setSubmitted(false)
+    }, 3000)
+}
+
 return (
     <div id="contact-form" className="container">
+        {submitted ? (
+            <div
+                className="bg-gray-200 border-gray-600 text-black border-l-4 p-4"
+                role="alert"
+            >
+                <p className="font-bold text-2xl text-center">Thank you!</p>
+                <p className="text-base">
+                    We will contact you shortly to confirm your session!
+                </p>
+            </div>
+        ) : null}
         <div className="bg-white rounded-md p-8 flex flex-col items-center justify-center">
             <h2 className="text-xl text-black py-1 sm:text-4xl mb-4">
                 Book A Session
@@ -369,18 +389,28 @@ return (
             <p className="leading-relaxed mb-3 text-black text-sm sm:text-xl">
                 Lorem ipsum, dolor sit amet consectetur elit
             </p>
-            <form className="w-full min-h-fit flex flex-col items-center justify-between space-y-4 sm:space-y-6 sm:pt-4">
+            <form
+                className="w-full min-h-fit flex flex-col items-center justify-between space-y-4 sm:space-y-6 sm:pt-4"
+                onSubmit={handleSubmit}
+            >
                 <input
+                    disabled={submitted}
+                    required
                     className="my-2 text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                     type="text"
                     placeholder="Your name"
                     aria-label="Full name"
+                    name="name"
                     defaultValue={values.name}
                     onChange={handleChange}
                 />
                 <input
+                    pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+                    disabled={submitted}
+                    required
                     className="my-2 text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                     type="email"
+                    name="email"
                     placeholder="E-mail address"
                     aria-label="E-mail address"
                     defaultValue={values.email}
@@ -391,12 +421,15 @@ return (
                 </label>
 
                 <select
-                    name="occasions"
-                    id="occasionTypes"
+                    name="service"
+                    id="serviceTypes"
+                    disabled={submitted}
                     defaultValue={values.service}
                     onChange={handleChange}
+                    required
                     className="text-lg text-black relative w-3/4 bg-white border border-gray-300 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                 >
+                    <option value="">Select Service</option>
                     <option value="portrait">Portrait</option>
                     <option value="couple">Couple</option>
                     <option value="engagement">Engagement</option>
@@ -405,22 +438,24 @@ return (
                     <option value="maternity">Maternity</option>
                     <option value="newborn">Newborn</option>
                 </select>
+
                 <label htmlFor="eventDate" className="text-lg">
                     Select date
                 </label>
                 <input
+                    disabled={submitted}
                     className="text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                     type="date"
                     id="eventDate"
-                    name="Event date"
+                    name="eventDate"
                     onChange={handleChange}
-                    value={values.eventDate}
+                    defaultValue={values.eventDate}
                 ></input>
+
                 <button className="text-white text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-full bg-gray-400 hover:bg-gray-800">
                     Submit
                 </button>
             </form>
-            <div>Success!</div>
         </div>
     </div>
 )
