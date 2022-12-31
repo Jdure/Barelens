@@ -341,6 +341,24 @@ export function ImageCard({
 export function Form() {
 const date = new Date()
 const defaultDate = date.toLocaleDateString("en-CA")
+const [submitted, setSubmitted] = useState(false)
+const [values, setValues] = useState({
+    name: "",
+    email: "",
+    service: "",
+    eventDate: defaultDate,
+})
+
+const handleChange = (
+    evt: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+) => {
+    evt.persist()
+    const value = evt.target.value
+    setValues((values) => ({
+        ...values,
+        [evt.target.name]: value,
+    }))
+}
 
 return (
     <div id="contact-form" className="container">
@@ -351,18 +369,22 @@ return (
             <p className="leading-relaxed mb-3 text-black text-sm sm:text-xl">
                 Lorem ipsum, dolor sit amet consectetur elit
             </p>
-            <form className="w-full min-h-fit flex flex-col items-center justify-between space-y-3 sm:space-y-6 sm:pt-4">
+            <form className="w-full min-h-fit flex flex-col items-center justify-between space-y-4 sm:space-y-6 sm:pt-4">
                 <input
                     className="my-2 text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                     type="text"
                     placeholder="Your name"
                     aria-label="Full name"
+                    defaultValue={values.name}
+                    onChange={handleChange}
                 />
                 <input
                     className="my-2 text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                     type="email"
                     placeholder="E-mail address"
                     aria-label="E-mail address"
+                    defaultValue={values.email}
+                    onChange={handleChange}
                 />
                 <label htmlFor="occasionTypes" className="text-lg">
                     Choose service
@@ -371,6 +393,8 @@ return (
                 <select
                     name="occasions"
                     id="occasionTypes"
+                    defaultValue={values.service}
+                    onChange={handleChange}
                     className="text-lg text-black relative w-3/4 bg-white border border-gray-300 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                 >
                     <option value="portrait">Portrait</option>
@@ -389,12 +413,14 @@ return (
                     type="date"
                     id="eventDate"
                     name="Event date"
-                    value={defaultDate}
+                    onChange={handleChange}
+                    value={values.eventDate}
                 ></input>
                 <button className="text-white text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-full bg-gray-400 hover:bg-gray-800">
                     Submit
                 </button>
             </form>
+            <div>Success!</div>
         </div>
     </div>
 )
