@@ -12,10 +12,9 @@ type ServicesProps = {
     cover_image: string
 }
 
-export default function ServicesPage(props: { images: Images[] }) {
-    const galleryImages = props.images
-    const nums = Array.from({ length: 3 }, (_, i) => i + 1)
-    const img = "https://source.unsplash.com/Iz1ae_tdK6k/720x1280"
+export default function ServicesPage(props: { services: ServicesProps[] }) {
+    const allServices = props.services
+    console.log(allServices)
     return (
         <>
             <div className="flex flex-col py-6 mb-6 px-6">
@@ -76,10 +75,10 @@ export default function ServicesPage(props: { images: Images[] }) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const directus = await getDirectusClient()
-    const response = await directus.items("Services").readByQuery({ limit: -1 })
+    const services = await directus.items("Services").readByQuery({ limit: -1 })
     return {
         props: {
-            images,
+            services,
         },
     }
 }
