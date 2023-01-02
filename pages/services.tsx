@@ -2,6 +2,15 @@ import { GetStaticProps } from "next"
 import React from "react"
 import { ImageCard } from "../components"
 import { Images } from "../types"
+import { getDirectusClient } from "../lib/directus"
+
+type ServicesProps = {
+    id: number
+    title: string
+    description: string
+    cost: number
+    cover_image: string
+}
 
 export default function ServicesPage(props: { images: Images[] }) {
     const galleryImages = props.images
@@ -66,41 +75,8 @@ export default function ServicesPage(props: { images: Images[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const res = await fetch(
-        `https://${process.env.CLOUDINARY_API_KEY}:${process.env.CLOUDINARY_API_SECRET}@api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/search`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                expression: `folder=test`,
-            }),
-        }
-    )
-    const { resources } = await res.json()
-
-    const images: Images[] = resources.map(
-        (value: {
-            public_id: string
-            filename: string
-            secure_url: string
-            width: Number
-            height: Number
-            created_at: Date
-        }) => {
-            const { created_at, width, height } = value
-            return {
-                id: value.public_id,
-                title: value.filename,
-                image: value.secure_url,
-                created_at,
-                width,
-                height,
-            }
-        }
-    )
-
+    const directus = await getDirectusClient()
+    const response = await directus.items("Services").readByQuery({ limit: -1 })
     return {
         props: {
             images,
