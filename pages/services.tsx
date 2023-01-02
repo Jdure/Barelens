@@ -4,7 +4,7 @@ import { ImageCard } from "../components"
 import { Images } from "../types"
 import { getDirectusClient } from "../lib/directus"
 
-type ServicesProps = {
+type Services = {
     id: number
     title: string
     description: string
@@ -12,8 +12,12 @@ type ServicesProps = {
     cover_image: string
 }
 
-export default function ServicesPage(props: { services: ServicesProps[] }) {
-    const allServices = props.services
+type ServicesPageProps = {
+    services: Services[]
+}
+
+export default function ServicesPage({ services }: ServicesPageProps) {
+    const allServices = services
     console.log(allServices)
     return (
         <>
