@@ -330,9 +330,11 @@ export function ImageCard({
                 width={720}
                 height={1280}
             />
-            <div className="absolute inset-0 m-3 rounded-sm flex flex-col items-center justify-center text-transparent ease-in duration-300 sm:justify-end sm:m-0 sm:inset-4 hover:text-white hover:backdrop-brightness-50">
+            <div className="absolute inset-0 m-3 rounded-sm flex flex-col items-center justify-around text-transparent ease-in duration-300 sm:m-0 sm:inset-4 hover:text-white hover:backdrop-brightness-50">
                 <h3 className="font-headings">{plan}</h3>
-                <p className="text-xl font-extrabold sm:text-2xl">{desc}</p>
+                <p className="text-base text-center font-extrabold sm:text-xl">
+                    {desc}
+                </p>
                 <p className="text-2xl font-extrabold">{price}</p>
             </div>
         </div>
