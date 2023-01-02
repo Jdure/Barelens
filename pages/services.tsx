@@ -1,8 +1,9 @@
 import { GetStaticProps } from "next"
-import React from "react"
+import React, { Key } from "react"
 import { ImageCard } from "../components"
 import { Images } from "../types"
 import { getDirectusClient } from "../lib/directus"
+import getImageUrl from "../util/getImagesUrl"
 
 type Services = {
     id: number
@@ -17,8 +18,6 @@ type ServicesPageProps = {
 }
 
 export default function ServicesPage({ services }: ServicesPageProps) {
-    const allServices = services
-    console.log(allServices)
     return (
         <>
             <div className="flex flex-col py-6 mb-6 px-6">
@@ -29,48 +28,16 @@ export default function ServicesPage({ services }: ServicesPageProps) {
                     Services & Rates
                 </p>
                 <div className="flex flex-wrap">
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/BOHyxqepP9Y/720x1280"
-                        imgTitle="img"
-                        plan="Headshot"
-                        desc="10 to 20 digitally edited images"
-                        price="300$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/Iz1ae_tdK6k/720x1280"
-                        imgTitle="img"
-                        plan="Couples"
-                        desc="10 to 20 digitally edited images"
-                        price="300$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/yj4kwA4h_Ms/720x1280"
-                        imgTitle="img"
-                        plan="Engagement"
-                        desc="30 to 50 digitally edited images"
-                        price="500$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/Za03n9MIt4s/720x1280"
-                        imgTitle="img"
-                        plan="Families"
-                        desc="50 to 60 digitally edited images"
-                        price="500$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/rsGdX91zqiU/720x1280"
-                        imgTitle="img"
-                        plan="Maternity"
-                        desc="50 to 60 digitally edited images"
-                        price="600$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/p76UivR30oo/720x1280"
-                        imgTitle="img"
-                        plan="Newborn"
-                        desc="50 to 60 digitally edited images"
-                        price="600$"
-                    />
+                    {services.map((service: Services) => (
+                        <ImageCard
+                            key={service.id}
+                            imgPath={getImageUrl(service.cover_image)}
+                            imgTitle={service.title}
+                            plan={service.title}
+                            desc={service.description}
+                            price={service.cost.toString() + "$"}
+                        />
+                    ))}
                 </div>
             </div>
         </>
@@ -79,10 +46,10 @@ export default function ServicesPage({ services }: ServicesPageProps) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const directus = await getDirectusClient()
-    const services = await directus.items("Services").readByQuery({ limit: -1 })
+    const response = await directus.items("Services").readByQuery({ limit: -1 })
     return {
         props: {
-            services,
+            services: response.data,
         },
     }
 }

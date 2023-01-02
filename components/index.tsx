@@ -15,7 +15,7 @@ import { useRef } from "react"
 import { useEffect } from "react"
 
 type ImageCardProps = {
-    imgPath: string
+    imgPath: string | null
     imgTitle: string
     price: string
     desc: string
@@ -324,7 +324,7 @@ export function ImageCard({
     return (
         <div className="relative h-auto w-full p-3 rounded-sm drop-shadow-md md:w-1/3 hover:drop-shadow-xl">
             <Image
-                src={imgPath}
+                src={imgPath || ""}
                 alt={imgTitle}
                 className="h-full w-full object-cover rounded-sm"
                 width={720}
