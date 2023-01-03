@@ -1,7 +1,24 @@
 import React from "react"
 import Image from "next/image"
+import { getDirectusClient } from "../lib/directus"
+import { GetStaticProps } from "next"
+import getImageUrl from "../util/getImagesUrl"
 
-export default function AboutPage() {
+type Photographer = {
+    id: number
+    name: string
+    email: string
+    instagram_account: string
+    tiktok_account: string
+    profile_image: string
+    bio: string
+}
+
+type AboutPageProps = {
+    photographers: Photographer
+}
+
+export default function AboutPage({ photographers }: AboutPageProps) {
     return (
         <>
             <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
@@ -13,9 +30,7 @@ export default function AboutPage() {
             <div className="flex flex-col pb-16 sm:pb-0 sm:py-12 sm:flex-row sm:h-fit">
                 <div className="flex flex-col px-6 py-4 sm:basis-1/2 items-center">
                     <Image
-                        src={
-                            "https://source.unsplash.com//LBMZaSrZMD8/720x1280"
-                        }
+                        src={getImageUrl(photographers.profile_image) || ""}
                         width={720}
                         height={1280}
                         alt="profile image"
@@ -24,14 +39,10 @@ export default function AboutPage() {
                 </div>
                 <div className="flex flex-col sm:justify-center sm:basis-1/2">
                     <p className="py-2 text-2xl font-headings text-center mx-6 sm:pb-8 sm:text-4xl sm:text-start">
-                        Hi, I&apos;m Beta!
+                        {`Hi, I'm ${photographers.name}!`}
                     </p>
                     <p className="text-center text-lg leading-relaxed break-words mx-6 sm:text-2xl sm:text-justify">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Ea quaerat tempore repudiandae aliquam expedita! Vero
-                        iure voluptatibus aliquam nulla corporis dicta
-                        aspernatur praesentium neque animi! Ducimus harum in sit
-                        beatae!
+                        {photographers.bio}
                     </p>
                     <div className="flex flex-row items-center justify-center sm:justify-start mx-6 pt-4 sm:pt-8 ">
                         <p className="text-lg leading-relaxed text-center sm:text-2xl sm:text-justify">
@@ -46,4 +57,14 @@ export default function AboutPage() {
             </div>
         </>
     )
+}
+
+export const getStaticProps: GetStaticProps = async (context) => {
+    const directus = await getDirectusClient()
+    const response = await directus.items("photographers").readOne(1)
+    return {
+        props: {
+            photographers: response,
+        },
+    }
 }

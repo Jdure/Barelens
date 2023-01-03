@@ -1,9 +1,11 @@
 import { Directus } from "@directus/sdk"
+import getConfig from "next/config"
 
-const email = process.env.DIRECTUS_EMAIL || ""
-const password = process.env.DIRECTUS_PASSWORD || ""
-const token = process.env.DIRECTUS_TOKEN || ""
-const directus = new Directus(process.env.DIRECTUS_URL || "")
+const { publicRuntimeConfig, serverRuntimeConfig } = getConfig()
+const { url } = publicRuntimeConfig
+const { email, password, token } = serverRuntimeConfig
+
+const directus = new Directus(`https://${url}`)
 
 export async function getDirectusClient() {
     if (email && password) {
