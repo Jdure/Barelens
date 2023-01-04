@@ -9,10 +9,11 @@ import {
     TbBrandFacebook,
 } from "react-icons/tb"
 import { MdOutlineEmail, MdMenu, MdClose } from "react-icons/md"
-import { Images } from "../types"
+import { Gallery, Images, Img } from "../types"
 import Image from "next/image"
 import { useRef } from "react"
 import { useEffect } from "react"
+import getImageUrl from "../util/getImagesUrl"
 
 type ImageCardProps = {
     imgPath: string | null
@@ -120,14 +121,11 @@ export default function NavBar() {
 export function Banner() {
     return (
         <div className="flex flex-col pt-10 sm:pt-28">
-            {/* <h1 className="text-center text-6xl sm:pb-4 sm:text-9xl">
-                BARE LENS
-            </h1> */}
             <Image
                 src="/images/Black logo - no background.svg"
                 width={50}
                 height={50}
-                alt="Bare Lens Photography"
+                alt="Bare Lens Photography Logo"
                 className="w-2/3 mx-auto text-6xl sm:pb-4"
             />
             <hr className="my-2 mx-auto w-80 h-0 bg-gray-100" />
@@ -140,7 +138,9 @@ export function Banner() {
     )
 }
 
-export function Carousel({ data }: any) {
+export function Carousel({ data }: Images) {
+    const [values] = data
+
     return (
         <div className="container my-8 mx-auto">
             <Swiper
@@ -164,15 +164,15 @@ export function Carousel({ data }: any) {
                     },
                 }}
             >
-                {data.map((value: Images, idx: Key) => {
+                {values.gallery.map((value: Gallery, idx: Key) => {
                     return (
                         <SwiperSlide key={idx}>
                             <Image
                                 width={1280}
                                 height={720}
                                 key={idx}
-                                alt={value.title}
-                                src={value.image}
+                                alt={values.title}
+                                src={getImageUrl(value.directus_files_id) || ""}
                                 style={{
                                     objectFit: "contain",
                                 }}
@@ -185,7 +185,11 @@ export function Carousel({ data }: any) {
     )
 }
 
-export function About() {
+export function About({ data }: Images) {
+    const [images] = data
+    const imgOne = images.gallery[0].directus_files_id
+    const imgTwo = images.gallery[1].directus_files_id
+
     return (
         <div className="flex flex-row mt-12 py-4 bg-gray-100">
             <div className="flex flex-col mb-4 sm:items-center basis-1/2">
@@ -195,19 +199,19 @@ export function About() {
                 </h2>
                 <Image
                     className="rounded-sm drop-shadow-md w-3/4 mx-auto sm:max-w-min sm:px-4"
-                    src={"https://source.unsplash.com/vH96q7p1sgw/720x1280"}
+                    src={getImageUrl(imgOne) || ""}
                     width={400}
                     height={400}
-                    alt="Jane Doe"
+                    alt="Picture of Beta M"
                 />
             </div>
             <div className="flex flex-col basis-1/2 items-center justify-between">
                 <Image
                     className="rounded-sm drop-shadow-md w-3/5 mx-auto sm:max-w-min sm:px-4"
-                    src={"https://source.unsplash.com/FXJRdoIhs_U/720x1280"}
+                    src={getImageUrl(imgTwo) || ""}
                     width={300}
                     height={300}
-                    alt="Portrait"
+                    alt="Woman taking a picture"
                 />
                 <p className="text-sm text-center sm:text-lg sm:text-justify sm:leading-relaxed sm:mx-4">
                     Photography is the perfect way to capture and preserve
@@ -226,14 +230,7 @@ export function About() {
     )
 }
 
-export function Works() {
-    const pictures = [
-        "jbaF5N0uO0k",
-        "jbiInQGY8og",
-        "4Yv84VgQkRM",
-        "rGHO4XSF0Qk",
-    ]
-
+export function Works({ data }: Images) {
     return (
         <>
             <h2 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
@@ -243,7 +240,7 @@ export function Works() {
                 Projects
             </p>
             <div className="flex flex-wrap justify-center my-6 md:my-12 md:justify-evenly 2xl:flex-nowrap">
-                {pictures.map((picture: String, idx: Key) => {
+                {data.map((value: Img, idx: Key) => {
                     return (
                         <div
                             key={idx}
@@ -251,15 +248,14 @@ export function Works() {
                         >
                             <Image
                                 className="rounded-sm drop-shadow-2xl w-3/4"
-                                src={`https://source.unsplash.com/${picture}/720x1280`}
+                                src={getImageUrl(value.cover_image) || ""}
                                 width={400}
                                 height={400}
                                 alt="images"
                             />
-                            <p className="text-sm">{idx} / Lorem</p>
-                            <p className="text-sm sm:text-base">
-                                Lorem ipsum dolor sit amet consectetur,
-                                adipisicing elit
+                            <p className="text-sm capitalize">{value.title}</p>
+                            <p className="text-sm sm:text-base capitalize">
+                                {value.caption}
                             </p>
                         </div>
                     )

@@ -1,68 +1,65 @@
-import React, { Key } from "react";
-import { GetStaticProps } from "next";
-import Image from "next/image";
-import NavBar, {
-    About,
-    Banner,
-    Carousel,
-    Contact,
-    Footer,
-    Works,
-} from "../components"
+import React from "react"
+import { GetStaticProps } from "next"
+import Image from "next/image"
+import { About, Banner, Carousel, Contact, Works } from "../components"
+import { getDirectusClient } from "../lib/directus"
 import { Images } from "../types"
 
-export default function HomePage(props: { images: Images[] }) {
-    const bannerImgs = props.images
+type ImagesProps = {
+    aboutData: typeof Image[]
+    carouselData: typeof Image[]
+    featuredWorks: typeof Image[]
+}
+
+// TODO: Implement types correctly
+
+export default function HomePage({
+    carouselData,
+    aboutData,
+    featuredWorks,
+}: any) {
     return (
         <div>
             <Banner />
-            <Carousel data={bannerImgs} />
-            <About />
-            <Works />
+            <Carousel data={carouselData} />
+            <About data={aboutData} />
+            <Works data={featuredWorks} />
             <Contact />
         </div>
     )
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const res = await fetch(
-        `https://${process.env.CLOUDINARY_API_KEY}:${process.env.CLOUDINARY_API_SECRET}@api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/search`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                expression: `folder=test AND tags:banner`,
-            }),
-        }
-    )
-    const { resources } = await res.json()
+    const directus = await getDirectusClient()
+    const response = await directus.items("Images").readByQuery({
+        fields: [
+            "title",
+            "id",
+            "title",
+            "cover_image",
+            "description",
+            "caption",
+            "gallery.directus_files_id",
+        ],
+    })
 
-    const images: Images[] = resources.map(
-        (value: {
-            public_id: string
-            filename: string
-            secure_url: string
-            width: Number
-            height: Number
-            created_at: Date
-        }) => {
-            const { created_at, width, height } = value
-            return {
-                id: value.public_id,
-                title: value.filename,
-                image: value.secure_url,
-                created_at,
-                width,
-                height,
-            }
-        }
+    const carouselData = response.data?.filter(
+        (item: any) => item.title === "carousel"
+    )
+
+    const aboutData = response.data?.filter(
+        (item: any) => item.title === "about-section"
+    )
+
+    const featuredWorks = response.data?.filter(
+        (item: any) => item.title != "about-section" && item.title != "carousel"
     )
 
     return {
         props: {
-            images,
+            carouselData,
+            aboutData,
+            featuredWorks,
         },
     }
 }

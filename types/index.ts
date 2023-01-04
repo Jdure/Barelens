@@ -1,8 +1,16 @@
 export interface Images {
-    id: string
+    data: Img[]
+}
+
+export interface Img {
+    id: number
     title: string
-    image: string
-    width: Number | undefined
-    height: Number | undefined
-    created_at: Date
+    cover_image: string
+    description: string
+    caption: string
+    gallery: Gallery[]
+}
+
+export interface Gallery {
+    directus_files_id: string
 }
