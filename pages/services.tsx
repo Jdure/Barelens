@@ -1,24 +1,15 @@
 import { GetStaticProps } from "next"
-import React, { Key } from "react"
+import React from "react"
 import { ImageCard } from "../components"
-import { Images } from "../types"
+import { ServiceProps } from "../types"
 import { getDirectusClient } from "../lib/directus"
 import getImageUrl from "../util/getImagesUrl"
 
-type Services = {
-    id: number
-    title: string
-    description: string
-    cost: number
-    cover_image: string
-}
-
 type ServicesPageProps = {
-    services: Services[]
+    services: ServiceProps[]
 }
 
 export default function ServicesPage({ services }: ServicesPageProps) {
-    console.log(services)
     return (
         <>
             <div className="flex flex-col py-6 mb-6 px-6">
@@ -29,10 +20,12 @@ export default function ServicesPage({ services }: ServicesPageProps) {
                     Services & Rates
                 </p>
                 <div className="flex flex-wrap">
-                    {services.map((service: Services) => (
+                    {services.map((service: ServiceProps) => (
                         <ImageCard
                             key={service.id}
-                            imgPath={getImageUrl(service.cover_image)}
+                            imgPath={getImageUrl(
+                                service.service_image[0].primary_image as string
+                            )}
                             imgTitle={service.title}
                             plan={service.title}
                             desc={service.description}
@@ -47,7 +40,16 @@ export default function ServicesPage({ services }: ServicesPageProps) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const directus = await getDirectusClient()
-    const response = await directus.items("services").readByQuery({ limit: -1 })
+    const response = await directus.items("services").readByQuery({
+        fields: [
+            "id",
+            "title",
+            "cost",
+            "description",
+            "service_image.primary_image",
+            "service_image.image_collection.directus_files_id",
+        ],
+    })
     return {
         props: {
             services: response.data,

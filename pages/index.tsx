@@ -1,9 +1,8 @@
 import React from "react"
 import { GetStaticProps } from "next"
-import Image from "next/image"
 import { About, Banner, Carousel, Contact, Works } from "../components"
 import { getDirectusClient } from "../lib/directus"
-import { Images, ImgProps } from "../types"
+import { ImgProps } from "../types"
 
 type ContentProps = {
     carouselData: ImgProps[]

@@ -1,7 +1,6 @@
 import React from "react"
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md"
 import { FaInstagram } from "react-icons/fa"
-import Image from "next/image"
 import { Form } from "../components"
 
 export default function ContactPage() {
