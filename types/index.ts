@@ -1,16 +1,20 @@
 export interface Images {
-    data: Img[]
+    data: ImgProps[]
 }
 
-export interface Img {
+export interface ImgProps {
     id: number
     title: string
-    cover_image: string
-    description: string
     caption: string
-    gallery: Gallery[]
+    description: string
+    section_images: SectionImage[]
 }
 
-export interface Gallery {
+export interface SectionImage {
+    primary_image: null | string
+    image_collection: ImageCollection[]
+}
+
+export interface ImageCollection {
     directus_files_id: string
 }

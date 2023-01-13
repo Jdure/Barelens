@@ -3,21 +3,16 @@ import { GetStaticProps } from "next"
 import Image from "next/image"
 import { About, Banner, Carousel, Contact, Works } from "../components"
 import { getDirectusClient } from "../lib/directus"
-import { Images } from "../types"
+import { Images, ImgProps } from "../types"
 
-type ImagesProps = {
-    aboutData: typeof Image[]
-    carouselData: typeof Image[]
-    featuredWorks: typeof Image[]
+type ContentProps = {
+    carouselData: ImgProps[]
+    aboutData: ImgProps[]
+    featuredWorks: ImgProps[]
 }
 
-// TODO: Implement types correctly
-
-export default function HomePage({
-    carouselData,
-    aboutData,
-    featuredWorks,
-}: any) {
+export default function HomePage({ carouselData, aboutData, featuredWorks }: ContentProps) {
+    console.log(featuredWorks)
     return (
         <div>
             <Banner />
@@ -31,15 +26,14 @@ export default function HomePage({
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const directus = await getDirectusClient()
-    const response = await directus.items("Images").readByQuery({
+    const response = await directus.items("sections").readByQuery({
         fields: [
-            "title",
             "id",
             "title",
-            "cover_image",
-            "description",
             "caption",
-            "gallery.directus_files_id",
+            "description",
+            "section_images.primary_image",
+            "section_images.image_collection.directus_files_id",
         ],
     })
 
@@ -48,11 +42,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
     )
 
     const aboutData = response.data?.filter(
-        (item: any) => item.title === "about-section"
+        (item: any) => item.title === "about"
     )
 
     const featuredWorks = response.data?.filter(
-        (item: any) => item.title != "about-section" && item.title != "carousel"
+        (item: any) => item.title != "about" && item.title != "carousel"
     )
 
     return {

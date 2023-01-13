@@ -18,6 +18,7 @@ type ServicesPageProps = {
 }
 
 export default function ServicesPage({ services }: ServicesPageProps) {
+    console.log(services)
     return (
         <>
             <div className="flex flex-col py-6 mb-6 px-6">
@@ -46,7 +47,7 @@ export default function ServicesPage({ services }: ServicesPageProps) {
 
 export const getStaticProps: GetStaticProps = async (context) => {
     const directus = await getDirectusClient()
-    const response = await directus.items("Services").readByQuery({ limit: -1 })
+    const response = await directus.items("services").readByQuery({ limit: -1 })
     return {
         props: {
             services: response.data,

@@ -9,7 +9,7 @@ import {
     TbBrandFacebook,
 } from "react-icons/tb"
 import { MdOutlineEmail, MdMenu, MdClose } from "react-icons/md"
-import { Gallery, Images, Img } from "../types"
+import { ImageCollection, Images, ImgProps } from "../types"
 import Image from "next/image"
 import { useRef } from "react"
 import { useEffect } from "react"
@@ -139,8 +139,7 @@ export function Banner() {
 }
 
 export function Carousel({ data }: Images) {
-    const [values] = data
-
+    const [{ title, section_images }] = data
     return (
         <div className="container my-8 mx-auto">
             <Swiper
@@ -164,31 +163,35 @@ export function Carousel({ data }: Images) {
                     },
                 }}
             >
-                {values.gallery.map((value: Gallery, idx: Key) => {
-                    return (
-                        <SwiperSlide key={idx}>
-                            <Image
-                                width={1280}
-                                height={720}
-                                key={idx}
-                                alt={values.title}
-                                src={getImageUrl(value.directus_files_id) || ""}
-                                style={{
-                                    objectFit: "contain",
-                                }}
-                            />
-                        </SwiperSlide>
-                    )
-                })}
+                {section_images[0].image_collection.map(
+                    (value: ImageCollection, idx: Key) => {
+                        return (
+                            <SwiperSlide key={idx}>
+                                <Image
+                                    width={1280}
+                                    height={720}
+                                    key={idx}
+                                    alt={title}
+                                    src={
+                                        getImageUrl(value.directus_files_id) ||
+                                        ""
+                                    }
+                                    style={{
+                                        objectFit: "contain",
+                                    }}
+                                />
+                            </SwiperSlide>
+                        )
+                    }
+                )}
             </Swiper>
         </div>
     )
 }
 
 export function About({ data }: Images) {
-    const [images] = data
-    const imgOne = images.gallery[0].directus_files_id
-    const imgTwo = images.gallery[1].directus_files_id
+    const [{ section_images }] = data
+    const [imgOne, imgTwo] = section_images[0].image_collection
 
     return (
         <div className="flex flex-row mt-12 py-4 bg-gray-100">
@@ -199,7 +202,7 @@ export function About({ data }: Images) {
                 </h2>
                 <Image
                     className="rounded-sm drop-shadow-md w-3/4 mx-auto sm:max-w-min sm:px-4"
-                    src={getImageUrl(imgOne) || ""}
+                    src={getImageUrl(imgOne.directus_files_id) || ""}
                     width={400}
                     height={400}
                     alt="Picture of Beta M"
@@ -208,10 +211,10 @@ export function About({ data }: Images) {
             <div className="flex flex-col basis-1/2 items-center justify-between">
                 <Image
                     className="rounded-sm drop-shadow-md w-3/5 mx-auto sm:max-w-min sm:px-4"
-                    src={getImageUrl(imgTwo) || ""}
+                    src={getImageUrl(imgTwo.directus_files_id) || ""}
                     width={300}
                     height={300}
-                    alt="Woman taking a picture"
+                    alt="Beta taking a picture"
                 />
                 <p className="text-sm text-center sm:text-lg sm:text-justify sm:leading-relaxed sm:mx-4">
                     Photography is the perfect way to capture and preserve
@@ -231,6 +234,8 @@ export function About({ data }: Images) {
 }
 
 export function Works({ data }: Images) {
+    const [values] = data
+
     return (
         <>
             <h2 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
@@ -240,7 +245,7 @@ export function Works({ data }: Images) {
                 Projects
             </p>
             <div className="flex flex-wrap justify-center my-6 md:my-12 md:justify-evenly 2xl:flex-nowrap">
-                {data.map((value: Img, idx: Key) => {
+                {data.map((value: ImgProps, idx: Key) => {
                     return (
                         <div
                             key={idx}
@@ -248,7 +253,12 @@ export function Works({ data }: Images) {
                         >
                             <Image
                                 className="rounded-sm drop-shadow-2xl w-3/4"
-                                src={getImageUrl(value.cover_image) || ""}
+                                src={
+                                    getImageUrl(
+                                        value.section_images[0]
+                                            .primary_image as string
+                                    ) || ""
+                                }
                                 width={400}
                                 height={400}
                                 alt="images"
