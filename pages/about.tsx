@@ -30,7 +30,12 @@ export default function AboutPage({ photographers }: AboutPageProps) {
             <div className="flex flex-col pb-16 sm:pb-0 sm:py-12 sm:flex-row sm:h-fit">
                 <div className="flex flex-col px-6 py-4 sm:basis-1/2 items-center">
                     <Image
-                        src={getImageUrl(photographers.profile_image) || ""}
+                        src={
+                            getImageUrl(
+                                photographers.profile_image,
+                                "default"
+                            ) || ""
+                        }
                         width={720}
                         height={1280}
                         alt="profile image"

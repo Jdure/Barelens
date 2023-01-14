@@ -127,6 +127,7 @@ export function Banner() {
                 height={50}
                 alt="Bare Lens Photography Logo"
                 className="w-2/3 mx-auto text-6xl sm:pb-4"
+                priority={true}
             />
             <hr className="my-2 mx-auto w-80 h-0 bg-gray-100" />
             <div className="text-xs text-center sm:justify-evenly sm:text-2xl flex flex-row py-4">
@@ -147,8 +148,8 @@ export function Carousel({ data }: Images) {
                 spaceBetween={15}
                 slidesPerView={1.25}
                 centeredSlides={true}
-                lazy
                 loop
+                lazy
                 effect="cards"
                 breakpoints={{
                     320: {
@@ -173,12 +174,16 @@ export function Carousel({ data }: Images) {
                                     key={idx}
                                     alt={title}
                                     src={
-                                        getImageUrl(value.directus_files_id) ||
-                                        ""
+                                        getImageUrl(
+                                            value.directus_files_id,
+                                            "carousel-images"
+                                        ) || ""
                                     }
                                     style={{
                                         objectFit: "contain",
                                     }}
+                                    blurDataURL="URL"
+                                    placeholder="blur"
                                 />
                             </SwiperSlide>
                         )
@@ -202,7 +207,7 @@ export function About({ data }: Images) {
                 </h2>
                 <Image
                     className="rounded-sm drop-shadow-md w-3/4 mx-auto sm:max-w-min sm:px-4"
-                    src={getImageUrl(imgOne.directus_files_id) || ""}
+                    src={getImageUrl(imgOne.directus_files_id, "default") || ""}
                     width={400}
                     height={400}
                     alt="Picture of Beta M"
@@ -211,7 +216,7 @@ export function About({ data }: Images) {
             <div className="flex flex-col basis-1/2 items-center justify-between">
                 <Image
                     className="rounded-sm drop-shadow-md w-3/5 mx-auto sm:max-w-min sm:px-4"
-                    src={getImageUrl(imgTwo.directus_files_id) || ""}
+                    src={getImageUrl(imgTwo.directus_files_id, "default") || ""}
                     width={300}
                     height={300}
                     alt="Beta taking a picture"
@@ -256,7 +261,8 @@ export function Works({ data }: Images) {
                                 src={
                                     getImageUrl(
                                         value.section_images[0]
-                                            .primary_image as string
+                                            .primary_image as string,
+                                        "default"
                                     ) || ""
                                 }
                                 width={400}

@@ -24,7 +24,9 @@ export default function ServicesPage({ services }: ServicesPageProps) {
                         <ImageCard
                             key={service.id}
                             imgPath={getImageUrl(
-                                service.service_image[0].primary_image as string
+                                service.service_image[0]
+                                    .primary_image as string,
+                                "default"
                             )}
                             imgTitle={service.title}
                             plan={service.title}
