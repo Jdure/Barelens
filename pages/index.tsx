@@ -1,6 +1,6 @@
 import React from "react"
 import { GetStaticProps } from "next"
-import { About, Banner, Carousel, Contact, Works } from "../components"
+import dynamic from "next/dynamic"
 import { getDirectusClient } from "../lib/directus"
 import { ImgProps } from "../types"
 
@@ -10,14 +10,52 @@ type ContentProps = {
     featuredWorks: ImgProps[]
 }
 
-export default function HomePage({ carouselData, aboutData, featuredWorks }: ContentProps) {
-    console.log(featuredWorks)
+const HomeBanner = dynamic(
+    () => import("../components/Banner").then((module) => module.Banner),
+    {
+        ssr: false,
+    }
+)
+
+const Carousel = dynamic(
+    () => import("../components/Carousel").then((module) => module.Carousel),
+    {
+        ssr: false,
+    }
+)
+
+const About = dynamic(
+    () => import("../components/About").then((module) => module.About),
+    {
+        ssr: false,
+    }
+)
+
+const FeaturedWorks = dynamic(
+    () => import("../components/Works").then((module) => module.Works),
+    {
+        ssr: false,
+    }
+)
+
+const Contact = dynamic(
+    () => import("../components/Contact").then((module) => module.Contact),
+    {
+        ssr: false,
+    }
+)
+
+export default function HomePage({
+    carouselData,
+    aboutData,
+    featuredWorks,
+}: ContentProps) {
     return (
         <div>
-            <Banner />
+            <HomeBanner />
             <Carousel data={carouselData} />
             <About data={aboutData} />
-            <Works data={featuredWorks} />
+            <FeaturedWorks data={featuredWorks} />
             <Contact />
         </div>
     )
