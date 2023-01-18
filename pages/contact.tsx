@@ -12,7 +12,7 @@ export default function ContactPage() {
             <p className="py-3 text-xl font-headings text-center sm:text-6xl">
                 Connect with us and bring your vision to life
             </p>
-            <div className="flex flex-col sm:flex-row pt-2 sm:pt-12 sm:h-fit">
+            <div className="flex flex-col sm:flex-row pt-2 sm:pt-12 sm:h-full xl:h-screen">
                 <div className="flex flex-col bg-gray-100 items-center py-6 sm:basis-1/2">
                     <h2 className="text-xl text-black py-1 sm:text-4xl">
                         Contact Information
