@@ -1,7 +1,14 @@
 import React from "react"
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md"
 import { FaInstagram } from "react-icons/fa"
-import { Form } from "../components"
+import dynamic from "next/dynamic"
+
+const Form = dynamic(
+    () => import("../components/Form").then((module) => module.Form),
+    {
+        ssr: false,
+    }
+)
 
 export default function ContactPage() {
     return (

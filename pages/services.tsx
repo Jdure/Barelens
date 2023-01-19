@@ -1,13 +1,20 @@
 import { GetStaticProps } from "next"
 import React from "react"
-import { ImageCard } from "../components"
 import { ServiceProps } from "../types"
 import { getDirectusClient } from "../lib/directus"
 import getImageUrl from "../util/getImagesUrl"
+import dynamic from "next/dynamic"
 
 type ServicesPageProps = {
     services: ServiceProps[]
 }
+
+const ImageCard = dynamic(
+    () => import("../components/ImageCard").then((module) => module.ImageCard),
+    {
+        ssr: false,
+    }
+)
 
 export default function ServicesPage({ services }: ServicesPageProps) {
     return (

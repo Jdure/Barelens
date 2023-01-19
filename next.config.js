@@ -12,7 +12,7 @@ const nextConfig = {
         token: process.env.DIRECTUS_DOCKER_TOKEN,
     },
     images: {
-        domains: ["res.cloudinary.com", "source.unsplash.com", "localhost"],
+        domains: ["localhost"],
     },
 }
 

@@ -39,3 +39,10 @@ export interface ServiceImage {
 export interface ImageCollection {
     directus_files_id: string
 }
+
+export interface UserRequest {
+    name: string
+    email: string
+    service_type: string
+    event_date: Date | string
+}
