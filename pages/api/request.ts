@@ -8,9 +8,12 @@ export default async function request(
     res: NextApiResponse<UserRequest>
 ) {
     if (req.method === "POST") {
-        const { name, email, service, eventDate } = req.body
-        console.log(eventDate)
-        createUserRequest(name, email, service, eventDate)
+        createUserRequest(
+            req.body.name,
+            req.body.email,
+            req.body.service,
+            req.body.eventDate
+        )
         res.status(200).json(req.body)
     }
 }

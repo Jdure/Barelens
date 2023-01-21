@@ -1,14 +1,11 @@
-import { setHours, setMinutes } from "date-fns"
+import { format, setHours, setMinutes } from "date-fns"
 import React, { useRef, useState } from "react"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 
-//TODO: FIX DATE and TIME VALUE ISSUE
-
 export function Form() {
     const today = new Date()
-    const defaultDate = today.toLocaleDateString("en-CA")
-
+    const defaultDate = format(today, "yyyy-MM-dd hh:mm:ss")
     const formRef = useRef<HTMLFormElement>(null)
     const [submitted, setSubmitted] = useState(false)
     const [startDate, setStartDate] = useState(
@@ -18,7 +15,7 @@ export function Form() {
         name: "",
         email: "",
         service: "",
-        eventDate: startDate,
+        eventDate: defaultDate,
     })
 
     const isWeekend = (today: Date) => {
@@ -42,8 +39,9 @@ export function Form() {
             name: "",
             email: "",
             service: "",
-            eventDate: startDate,
+            eventDate: defaultDate,
         })
+        setStartDate(today)
     }
 
     const addRequest = async (reqObj: Object) => {
@@ -61,9 +59,7 @@ export function Form() {
         evt.preventDefault()
         setSubmitted(true)
 
-        // addRequest(values)
-
-        console.log(values)
+        addRequest(values)
 
         if (formRef.current) {
             formRef.current?.reset()
@@ -145,16 +141,6 @@ export function Form() {
                     <label htmlFor="eventDate" className="text-lg">
                         Select date
                     </label>
-                    {/* <input
-                        disabled={submitted}
-                        className="text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
-                        type="date"
-                        id="eventDate"
-                        name="eventDate"
-                        min={defaultDate}
-                        onChange={handleChange}
-                        defaultValue={values.eventDate}
-                    /> */}
                     <ReactDatePicker
                         id="eventDate"
                         name="eventDate"
@@ -166,7 +152,11 @@ export function Form() {
                         selected={startDate}
                         filterDate={isWeekend}
                         dateFormat="MMMM d, yyyy h:mm aa"
-                        onChange={(date: Date) => setStartDate(date)}
+                        onChange={(date: Date) => {
+                            setStartDate(date)
+                            const d = format(date, "yyyy-MM-dd hh:mm:ss")
+                            values["eventDate"] = d
+                        }}
                     />
                     <button
                         type="submit"

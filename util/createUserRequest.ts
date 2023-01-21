@@ -15,7 +15,7 @@ export default async function addUserRequest(
         name: userName,
         email: userEmail,
         service_type: userService,
-        event_date: userDate,
+        event_date_time: userDate,
         status: "New",
     })
 }
