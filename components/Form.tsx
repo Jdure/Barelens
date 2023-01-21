@@ -2,6 +2,7 @@ import { format, setHours, setMinutes } from "date-fns"
 import React, { useRef, useState } from "react"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
+import sendRequest from "../util/sendUserRequest"
 
 export function Form() {
     const today = new Date()
@@ -9,7 +10,7 @@ export function Form() {
     const formRef = useRef<HTMLFormElement>(null)
     const [submitted, setSubmitted] = useState(false)
     const [startDate, setStartDate] = useState(
-        setHours(setMinutes(new Date(), 0), 8)
+        setHours(setMinutes(new Date(), 0), 9)
     )
     const [values, setValues] = useState({
         name: "",
@@ -44,22 +45,11 @@ export function Form() {
         setStartDate(today)
     }
 
-    const addRequest = async (reqObj: Object) => {
-        await fetch("api/request", {
-            method: "POST",
-            mode: "same-origin",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(reqObj),
-        })
-    }
-
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault()
         setSubmitted(true)
 
-        addRequest(values)
+        sendRequest(values)
 
         if (formRef.current) {
             formRef.current?.reset()
@@ -146,8 +136,13 @@ export function Form() {
                         name="eventDate"
                         minDate={today}
                         showTimeSelect
-                        minTime={setHours(setMinutes(new Date(), 0), 8)}
-                        maxTime={setHours(setMinutes(new Date(), 30), 17)}
+                        timeIntervals={180}
+                        minTime={setHours(setMinutes(new Date(), 0), 9)}
+                        maxTime={setHours(setMinutes(new Date(), 0), 18)}
+                        excludeTimes={[
+                            setHours(setMinutes(new Date(), 0), 12),
+                            setHours(setMinutes(new Date(), 0), 18),
+                        ]}
                         className="text-lg text-center appearance-none bg-transparent border-b border-gray-400 w-3/4 ml-10 sm:ml-16 text-black leading-none focus:outline-none"
                         selected={startDate}
                         filterDate={isWeekend}
