@@ -1,17 +1,30 @@
+import { setHours, setMinutes } from "date-fns"
 import React, { useRef, useState } from "react"
-import addUserRequest from "../util/createUserSession"
+import ReactDatePicker from "react-datepicker"
+import "react-datepicker/dist/react-datepicker.css"
+
+//TODO: FIX DATE and TIME VALUE ISSUE
 
 export function Form() {
-    const date = new Date()
-    const defaultDate = date.toLocaleDateString("en-CA")
+    const today = new Date()
+    const defaultDate = today.toLocaleDateString("en-CA")
+
     const formRef = useRef<HTMLFormElement>(null)
     const [submitted, setSubmitted] = useState(false)
+    const [startDate, setStartDate] = useState(
+        setHours(setMinutes(new Date(), 0), 8)
+    )
     const [values, setValues] = useState({
         name: "",
         email: "",
         service: "",
-        eventDate: defaultDate,
+        eventDate: startDate,
     })
+
+    const isWeekend = (today: Date) => {
+        const day = today.getDay()
+        return day === 0 || day === 6
+    }
 
     const handleChange = (
         evt: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -29,24 +42,8 @@ export function Form() {
             name: "",
             email: "",
             service: "",
-            eventDate: defaultDate,
+            eventDate: startDate,
         })
-    }
-
-    const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
-        evt.preventDefault()
-        setSubmitted(true)
-
-        addRequest(values)
-
-        if (formRef.current) {
-            formRef.current?.reset()
-            handleReset()
-        }
-
-        setTimeout(() => {
-            setSubmitted(false)
-        }, 3000)
     }
 
     const addRequest = async (reqObj: Object) => {
@@ -58,6 +55,24 @@ export function Form() {
             },
             body: JSON.stringify(reqObj),
         })
+    }
+
+    const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
+        evt.preventDefault()
+        setSubmitted(true)
+
+        // addRequest(values)
+
+        console.log(values)
+
+        if (formRef.current) {
+            formRef.current?.reset()
+            handleReset()
+        }
+
+        setTimeout(() => {
+            setSubmitted(false)
+        }, 3000)
     }
 
     return (
@@ -130,16 +145,29 @@ export function Form() {
                     <label htmlFor="eventDate" className="text-lg">
                         Select date
                     </label>
-                    <input
+                    {/* <input
                         disabled={submitted}
                         className="text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                         type="date"
                         id="eventDate"
                         name="eventDate"
+                        min={defaultDate}
                         onChange={handleChange}
                         defaultValue={values.eventDate}
+                    /> */}
+                    <ReactDatePicker
+                        id="eventDate"
+                        name="eventDate"
+                        minDate={today}
+                        showTimeSelect
+                        minTime={setHours(setMinutes(new Date(), 0), 8)}
+                        maxTime={setHours(setMinutes(new Date(), 30), 17)}
+                        className="text-lg text-center appearance-none bg-transparent border-b border-gray-400 w-3/4 ml-10 sm:ml-16 text-black leading-none focus:outline-none"
+                        selected={startDate}
+                        filterDate={isWeekend}
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        onChange={(date: Date) => setStartDate(date)}
                     />
-
                     <button
                         type="submit"
                         className="text-white text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-full bg-gray-400 hover:bg-gray-800"

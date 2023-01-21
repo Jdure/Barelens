@@ -1,13 +1,14 @@
 import React from "react"
 import { getDirectusClient } from "../lib/directus"
 
-export default async function checkDatabase() {
+export default async function checkDate(inputDate: string | Date) {
     const directus = await getDirectusClient()
 
-    const requests = await directus.items("request").readByQuery({
+    const event = await directus.items("request").readByQuery({
         fields: ["event_date"],
     })
 
-    // Filter the database
-    //If the date return error message that date is taken
+    return event.data?.filter((item: any) => item.event_date === inputDate)
+        ? true
+        : false
 }
