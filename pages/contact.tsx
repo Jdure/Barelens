@@ -2,6 +2,8 @@ import React from "react"
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md"
 import { FaInstagram } from "react-icons/fa"
 import dynamic from "next/dynamic"
+import { GetServerSideProps, GetStaticProps } from "next"
+import { getDirectusClient } from "../lib/directus"
 
 const Form = dynamic(
     () => import("../components/Form").then((module) => module.Form),
@@ -10,7 +12,11 @@ const Form = dynamic(
     }
 )
 
-export default function ContactPage() {
+type currSessionProps = {
+    currSessions: Date[]
+}
+
+export default function ContactPage({ currSessions }: currSessionProps) {
     return (
         <>
             <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
@@ -51,9 +57,23 @@ export default function ContactPage() {
                     </div>
                 </div>
                 <div className="flex h-full w-full grayscale sm:basis-1/2">
-                    <Form />
+                    <Form currSessions={currSessions} />
                 </div>
             </div>
         </>
     )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+    const directus = await getDirectusClient()
+    const response = await directus.items("request").readByQuery({
+        fields: ["event_date_time"],
+    })
+
+    const currSessions = response.data?.map((item) => item.event_date_time)
+    return {
+        props: {
+            currSessions,
+        },
+    }
 }
