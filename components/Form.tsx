@@ -1,4 +1,4 @@
-import { format, setHours, setMinutes, getTime } from "date-fns"
+import { format, setHours, setMinutes, getTime, isSameDay } from "date-fns"
 import React, { useRef, useState } from "react"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
@@ -12,7 +12,7 @@ export function Form({ currSessions }: currSessionProps) {
     const today = new Date()
     const defaultDate = format(today, "yyyy-MM-dd hh:mm:ss")
     const formRef = useRef<HTMLFormElement>(null)
-    const [excludedTimes, setExcludedTimes] = useState<number>(NaN)
+    const [excludedTimes, setExcludedTimes] = useState<Array<Date>>([])
     const [submitted, setSubmitted] = useState(false)
     const [startDate, setStartDate] = useState(
         setHours(setMinutes(new Date(), 0), 8)
@@ -66,12 +66,22 @@ export function Form({ currSessions }: currSessionProps) {
         }, 3000)
     }
 
-    const appointments = currSessions.map((i) => {
-        return {
-            day: format(new Date(i), "yyyy-MM-dd"),
-            time: getTime(new Date(i)),
-        }
-    })
+    const excludedSlots = (date: Date) =>
+        currSessions.reduce((acc: Array<Date>, item) => {
+            if (isSameDay(date, new Date(item))) {
+                const appointments = getTime(new Date(item))
+                const convertAppts = setHours(
+                    setMinutes(
+                        new Date(appointments),
+                        new Date(appointments).getMinutes()
+                    ),
+                    new Date(appointments).getHours()
+                )
+                acc.push(convertAppts)
+            }
+            setExcludedTimes(acc)
+            return acc
+        }, [])
 
     return (
         <div id="contact-form" className="container">
@@ -148,19 +158,12 @@ export function Form({ currSessions }: currSessionProps) {
                         name="eventDate"
                         minDate={today}
                         showTimeSelect
-                        timeIntervals={180}
+                        timeIntervals={90}
                         minTime={setHours(setMinutes(new Date(), 0), 9)}
-                        maxTime={setHours(setMinutes(new Date(), 0), 18)}
+                        maxTime={setHours(setMinutes(new Date(), 0), 20)}
                         excludeTimes={[
                             setHours(setMinutes(new Date(), 0), 12),
-                            setHours(setMinutes(new Date(), 0), 18),
-                            setHours(
-                                setMinutes(
-                                    new Date(excludedTimes),
-                                    new Date(excludedTimes).getMinutes()
-                                ),
-                                new Date(excludedTimes).getHours()
-                            ),
+                            ...excludedTimes,
                         ]}
                         className="text-lg text-center appearance-none bg-transparent border-b border-gray-400 w-3/4 ml-10 sm:ml-16 text-black leading-none focus:outline-none"
                         selected={startDate}
@@ -168,18 +171,10 @@ export function Form({ currSessions }: currSessionProps) {
                         dateFormat="MMMM d, yyyy h:mm aa"
                         onChange={(date: Date) => {
                             setStartDate(date)
-                            setExcludedTimes(NaN)
                             const d = format(date, "yyyy-MM-dd hh:mm:ss")
                             values["eventDate"] = d
                         }}
-                        onSelect={(date: Date) => {
-                            const selectDate = format(date, "yyyy-MM-dd")
-                            appointments.find((item) =>
-                                item.day != selectDate
-                                    ? null
-                                    : setExcludedTimes(item.time)
-                            )
-                        }}
+                        onSelect={excludedSlots}
                     />
                     <button
                         type="submit"
