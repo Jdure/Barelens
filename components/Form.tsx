@@ -83,13 +83,6 @@ export function Form({ currSessions }: currSessionProps) {
             return acc
         }, [])
 
-  const filterPassedTime = (time: string | number | Date) => {
-      const currentDate = new Date()
-      const selectedDate = new Date(time)
-
-      return currentDate.getTime() < selectedDate.getTime()
-  }
-
   return (
       <div id="contact-form" className="container">
           {submitted ? (
@@ -165,7 +158,7 @@ export function Form({ currSessions }: currSessionProps) {
                       name="eventDate"
                       minDate={today}
                       showTimeSelect
-                      filterTime={filterPassedTime}
+                      filterTime={isWeekend}
                       timeIntervals={90}
                       minTime={setHours(setMinutes(new Date(), 0), 9)}
                       maxTime={setHours(setMinutes(new Date(), 0), 20)}
