@@ -44,5 +44,5 @@ export interface UserRequest {
     name: string
     email: string
     service_type: string
-    event_date: Date | string
+    event_date_time: Date | string
 }
