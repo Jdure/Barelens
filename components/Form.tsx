@@ -3,6 +3,8 @@ import React, { useRef, useState } from "react"
 import ReactDatePicker from "react-datepicker"
 import "react-datepicker/dist/react-datepicker.css"
 import sendRequest from "../util/sendUserRequest"
+import { Request } from "../lib/zod"
+import Errors from "./Errors"
 
 type currSessionProps = {
     currSessions: Date[]
@@ -14,6 +16,7 @@ export function Form({ currSessions }: currSessionProps) {
     const formRef = useRef<HTMLFormElement>(null)
     const [excludedTimes, setExcludedTimes] = useState<Array<Date>>([])
     const [submitted, setSubmitted] = useState(false)
+    const [alerts, setAlerts] = useState(false)
     const [startDate, setStartDate] = useState(
         setHours(setMinutes(new Date(), 0), 8)
     )
@@ -38,6 +41,7 @@ export function Form({ currSessions }: currSessionProps) {
             ...values,
             [evt.target.name]: value,
         }))
+        setAlerts(false)
     }
 
     const handleReset = () => {
@@ -50,8 +54,16 @@ export function Form({ currSessions }: currSessionProps) {
         setStartDate(today)
     }
 
+    const formData = Request.safeParse(values)
+    const errors: any = formData.success ? {} : formData.error.format()
+
     const handleSubmit = (evt: React.FormEvent<HTMLFormElement>) => {
         evt.preventDefault()
+
+        if (!formData.success) {
+            return setAlerts(true)
+        }
+
         setSubmitted(true)
 
         sendRequest(values)
@@ -107,8 +119,10 @@ export function Form({ currSessions }: currSessionProps) {
                     className="w-full min-h-fit flex flex-col items-center justify-between space-y-4 sm:space-y-6 sm:pt-4"
                     onSubmit={handleSubmit}
                 >
+                    {alerts ? <Errors errors={errors?.name?._errors} /> : null}
                     <input
                         required
+                        minLength={2}
                         className="my-2 text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                         type="text"
                         placeholder="Your name"
@@ -117,8 +131,10 @@ export function Form({ currSessions }: currSessionProps) {
                         defaultValue={values.name}
                         onChange={handleChange}
                     />
+                    {alerts ? <Errors errors={errors?.email?._errors} /> : null}
                     <input
                         pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+                        minLength={10}
                         required
                         className="my-2 text-lg appearance-none bg-transparent border-b border-gray-400 w-3/4 text-black leading-none focus:outline-none"
                         type="email"

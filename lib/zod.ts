@@ -6,14 +6,14 @@ export const Request = z.object({
             required_error: "Name is required",
             invalid_type_error: "Name must be a string",
         })
-        .min(2),
+        .min(2, { message: "Name must contain at least 2 character(s)" }),
     email: z
         .string({
             required_error: "Email is required",
             invalid_type_error: "Email must be a string",
         })
         .email()
-        .min(7),
+        .min(10, { message: "Email must contain at least 10 character(s)" }),
     service: z.enum([
         "portrait",
         "couple",
