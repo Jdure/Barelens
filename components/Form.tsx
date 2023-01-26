@@ -179,7 +179,7 @@ export function Form({ currSessions }: currSessionProps) {
                         dateFormat="MMMM d, yyyy h:mm aa"
                         onChange={(date: Date) => {
                             setStartDate(date)
-                            const d = formatISO(date)
+                            const d = format(date, "yyyy-MM-dd'T'HH:mm:ss'Z'")
                             values["eventDate"] = d
                         }}
                         onSelect={excludedSlots}
