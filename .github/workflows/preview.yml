@@ -8,8 +8,10 @@ env:
   DIRECTUS_EMAIL: ${{ secrets.DIRECTUS_EMAIL }}
 on:
   push:
-    branches-ignore:
-      - main
+    branches:
+      - dev
+      - 'WIP/**'
+      - 'Feat/**'
 jobs:
   Deploy-Preview:
     runs-on: ubuntu-latest
