@@ -6,6 +6,7 @@ env:
   DIRECTUS_DOCKER_TOKEN: ${{ secrets.DIRECTUS_DOCKER_TOKEN }}
   DIRECTUS_DOCKER_PASSWORD: ${{ secrets.DIRECTUS_DOCKER_PASSWORD }}
   DIRECTUS_EMAIL: ${{ secrets.DIRECTUS_EMAIL }}
+  REVALIDATE_TOKEN: ${{ secrets.REVALIDATE_TOKEN }}
 on:
   push:
     branches:
