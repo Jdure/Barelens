@@ -1,7 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
 // TODO: Revalidate dynamically - Should be able to revalidate [home, service and about]
-// TODO: deploy site to host to test revalidation properly
 
 export default async function handler(
     req: NextApiRequest,
@@ -12,8 +11,7 @@ export default async function handler(
     }
 
     try {
-        console.log(req.query)
-        await res.revalidate("/")
+        await res.revalidate(req.query.path as string)
         return res.json({ revalidated: true })
     } catch (err) {
         return res.status(500).send("Error revalidating")
