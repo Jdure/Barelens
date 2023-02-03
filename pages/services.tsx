@@ -1,64 +1,46 @@
 import { GetStaticProps } from "next"
 import React from "react"
-import { ImageCard } from "../components"
-import { Images } from "../types"
+import { ServiceProps } from "../types"
+import { getDirectusClient } from "../lib/directus"
+import getImageUrl from "../util/getImagesUrl"
+import dynamic from "next/dynamic"
 
-export default function ServicesPage(props: { images: Images[] }) {
-    const galleryImages = props.images
-    const nums = Array.from({ length: 3 }, (_, i) => i + 1)
-    const img = "https://source.unsplash.com/Iz1ae_tdK6k/720x1280"
+type ServicesPageProps = {
+    services: ServiceProps[]
+}
+
+const ImageCard = dynamic(
+    () => import("../components/ImageCard").then((module) => module.ImageCard),
+    {
+        ssr: false,
+    }
+)
+
+export default function ServicesPage({ services }: ServicesPageProps) {
     return (
         <>
             <div className="flex flex-col py-6 mb-6 px-6">
                 <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
                     Memories to last a lifetime
                 </h1>
-                <p className="py-3 text-2xl font-headings text-center sm:text-6xl">
+                <p className="py-3 text-xl font-headings text-center sm:text-6xl">
                     Services & Rates
                 </p>
                 <div className="flex flex-wrap">
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/BOHyxqepP9Y/720x1280"
-                        imgTitle="img"
-                        plan="Headshot"
-                        desc="10 to 20 digitally edited images"
-                        price="300$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/Iz1ae_tdK6k/720x1280"
-                        imgTitle="img"
-                        plan="Couples"
-                        desc="10 to 20 digitally edited images"
-                        price="300$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/yj4kwA4h_Ms/720x1280"
-                        imgTitle="img"
-                        plan="Engagement"
-                        desc="30 to 50 digitally edited images"
-                        price="500$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/Za03n9MIt4s/720x1280"
-                        imgTitle="img"
-                        plan="Families"
-                        desc="50 to 60 digitally edited images"
-                        price="500$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/rsGdX91zqiU/720x1280"
-                        imgTitle="img"
-                        plan="Maternity"
-                        desc="50 to 60 digitally edited images"
-                        price="600$"
-                    />
-                    <ImageCard
-                        imgPath="https://source.unsplash.com/p76UivR30oo/720x1280"
-                        imgTitle="img"
-                        plan="Newborn"
-                        desc="50 to 60 digitally edited images"
-                        price="600$"
-                    />
+                    {services.map((service: ServiceProps) => (
+                        <ImageCard
+                            key={service.id}
+                            imgPath={getImageUrl(
+                                service.service_image[0]
+                                    .primary_image as string,
+                                "default"
+                            )}
+                            imgTitle={service.title}
+                            plan={service.title}
+                            desc={service.description}
+                            price={service.cost.toString() + "$"}
+                        />
+                    ))}
                 </div>
             </div>
         </>
@@ -66,44 +48,20 @@ export default function ServicesPage(props: { images: Images[] }) {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-    const res = await fetch(
-        `https://${process.env.CLOUDINARY_API_KEY}:${process.env.CLOUDINARY_API_SECRET}@api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/resources/search`,
-        {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                expression: `folder=test`,
-            }),
-        }
-    )
-    const { resources } = await res.json()
-
-    const images: Images[] = resources.map(
-        (value: {
-            public_id: string
-            filename: string
-            secure_url: string
-            width: Number
-            height: Number
-            created_at: Date
-        }) => {
-            const { created_at, width, height } = value
-            return {
-                id: value.public_id,
-                title: value.filename,
-                image: value.secure_url,
-                created_at,
-                width,
-                height,
-            }
-        }
-    )
-
+    const directus = await getDirectusClient()
+    const response = await directus.items("services").readByQuery({
+        fields: [
+            "id",
+            "title",
+            "cost",
+            "description",
+            "service_image.primary_image",
+            "service_image.image_collection.directus_files_id",
+        ],
+    })
     return {
         props: {
-            images,
+            services: response.data,
         },
     }
 }

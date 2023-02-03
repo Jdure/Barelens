@@ -1,8 +1,48 @@
 export interface Images {
-    id: string
+    data: ImgProps[]
+}
+
+export interface ImgProps {
+    id: number
     title: string
-    image: string
-    width: Number | undefined
-    height: Number | undefined
-    created_at: Date
+    caption: string
+    description: string
+    section_images: SectionImage[]
+}
+
+export interface SectionImage {
+    primary_image: null | string
+    image_collection: ImageCollection[]
+}
+
+export interface ImageCollection {
+    directus_files_id: string
+}
+
+export interface Services {
+    data: ServiceProps[]
+}
+
+export interface ServiceProps {
+    id: number
+    title: string
+    cost: number
+    description: string
+    service_image: ServiceImage[]
+}
+
+export interface ServiceImage {
+    primary_image: string
+    image_collection: ImageCollection[]
+}
+
+export interface ImageCollection {
+    directus_files_id: string
+}
+
+export interface UserRequest {
+    name: string
+    email: string
+    service_type: string
+    event_date_time: Date | string
 }
