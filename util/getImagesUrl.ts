@@ -7,5 +7,5 @@ const { url } = publicRuntimeConfig
 
 export default function getImageUrl(id: string, key: string) {
     if (!id) return null
-    return `http://${url}/assets/${id}?key=${key}`
+    return `https://${url}/assets/${id}?key=${key}`
 }
