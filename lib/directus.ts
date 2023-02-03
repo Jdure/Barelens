@@ -5,7 +5,7 @@ const { publicRuntimeConfig, serverRuntimeConfig } = getConfig()
 const { url } = publicRuntimeConfig
 const { email, password, token } = serverRuntimeConfig
 
-const directus = new Directus(`http://${url}`)
+const directus = new Directus(`https://${url}`)
 
 export async function getDirectusClient() {
     if (email && password) {

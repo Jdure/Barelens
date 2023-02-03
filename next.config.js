@@ -12,7 +12,7 @@ const nextConfig = {
         token: process.env.DIRECTUS_DOCKER_TOKEN,
     },
     images: {
-        domains: ["localhost"],
+        domains: [process.env.DIRECTUS_DOCKER_DOMAIN],
     },
 }
 
