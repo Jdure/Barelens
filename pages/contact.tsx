@@ -64,7 +64,7 @@ export default function ContactPage({ currSessions }: currSessionProps) {
     )
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
+export const getStaticProps: GetStaticProps = async (context) => {
     const directus = await getDirectusClient()
     const response = await directus.items("request").readByQuery({
         fields: ["event_date_time"],
