@@ -3,11 +3,14 @@ import createUserRequest from "../../util/createUserRequest"
 import { Request } from "../../lib/zod"
 import { ZodError } from "zod"
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+    req: NextApiRequest,
+    res: NextApiResponse
+) {
     if (req.method === "POST") {
         try {
             const body = Request.parse(req.body)
-            createUserRequest(
+            await createUserRequest(
                 body.name,
                 body.email,
                 body.service,
@@ -18,6 +21,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             if (e instanceof ZodError) {
                 return res.status(400).json({ error: e.flatten().fieldErrors })
             }
+            res.status(500).send({
+                server_error: "500 - Server-side error occurred",
+            })
         }
     }
 }
