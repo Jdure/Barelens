@@ -2,10 +2,14 @@ import Link from "next/link"
 import { useState, useRef, useEffect } from "react"
 import { MdClose, MdMenu } from "react-icons/md"
 import Image from "next/image"
+import { useRouter } from "next/router"
 
 export default function NavBar() {
     const [isNavOpen, setIsNavOpen] = useState(false)
-    const listStyle = "text-sm sm:text-2xl py-2 hover:underline"
+    const currRoute = useRouter().pathname
+    const listStyle =
+        "text-sm text-gray-300  sm:text-2xl py-2 hover:text-gray-800"
+    const activeLinkStyle = "text-gray-800  sm:text-2xl py-2"
     const mobileListStyle = "w-full hover:bg-gray-100"
 
     const menuRef = useRef<HTMLDivElement>(null)
@@ -55,16 +59,40 @@ export default function NavBar() {
                 </div>
                 {/* Desktop Menu */}
                 <div className="hidden sm:items-center sm:w-3/4 sm:flex sm:flex-row sm:justify-evenly">
-                    <Link className={listStyle} href={"/"}>
+                    <Link
+                        className={
+                            currRoute === "/" ? activeLinkStyle : listStyle
+                        }
+                        href={"/"}
+                    >
                         Home
                     </Link>
-                    <Link className={listStyle} href={"/about"}>
+                    <Link
+                        className={
+                            currRoute === "/about" ? activeLinkStyle : listStyle
+                        }
+                        href={"/about"}
+                    >
                         About
                     </Link>
-                    <Link className={listStyle} href={"/services"}>
+                    <Link
+                        className={
+                            currRoute === "/services"
+                                ? activeLinkStyle
+                                : listStyle
+                        }
+                        href={"/services"}
+                    >
                         Services
                     </Link>
-                    <Link className={listStyle} href={"/contact"}>
+                    <Link
+                        className={
+                            currRoute === "/contact"
+                                ? activeLinkStyle
+                                : listStyle
+                        }
+                        href={"/contact"}
+                    >
                         Contact
                     </Link>
                 </div>
