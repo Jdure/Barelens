@@ -8,7 +8,7 @@ import { getDirectusClient } from "../lib/directus"
 const Form = dynamic(
     () => import("../components/Form").then((module) => module.Form),
     {
-        ssr: false,
+        ssr: true,
     }
 )
 
