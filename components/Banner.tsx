@@ -2,7 +2,7 @@ import Image from "next/image"
 
 export function Banner() {
     return (
-        <div className="flex flex-col pt-10 sm:pt-28">
+        <div className="flex flex-col pt-10 sm:pt-20">
             <Image
                 src="/images/Black logo - no background.svg"
                 width={50}
