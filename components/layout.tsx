@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 import dynamic from "next/dynamic"
+import Head from "next/head"
 
 type LayoutProps = {
     children: ReactNode
@@ -20,6 +21,9 @@ export default function Layout({ children }: LayoutProps) {
     return (
         <>
             <NavBar />
+            <Head>
+                <title>Barelens Photography</title>
+            </Head>
             <main className="min-h-min">{children}</main>
             <Footer />
         </>

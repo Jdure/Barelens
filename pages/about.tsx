@@ -21,12 +21,14 @@ type AboutPageProps = {
 export default function AboutPage({ photographers }: AboutPageProps) {
     return (
         <>
-            <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
-                Meet the artist behind the lens
-            </h1>
-            <p className="py-3 text-xl font-headings text-center sm:text-6xl">
-                Capturing the beauty of life&apos;s moments
-            </p>
+            <div className="flex flex-col py-6 mb-6 px-6">
+                <h1 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
+                    Meet the artist behind the lens
+                </h1>
+                <p className="py-3 text-xl font-headings text-center sm:text-6xl">
+                    Capturing the beauty of life&apos;s moments
+                </p>
+            </div>
             <div className="flex flex-col pb-16 sm:pb-0 sm:py-12 sm:flex-row sm:h-fit">
                 <div className="flex flex-col px-6 py-4 sm:basis-1/2 items-center">
                     <Image
