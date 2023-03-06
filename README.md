@@ -38,10 +38,10 @@ DIRECTUS_PASSWORD=yourpassword
 DIRECTUS_TOKEN=yourtoken
 DIRECTUS_DOMAIN=yourdomain
 ```
-In the terminal cd into the root of the repo enter npm install to install the dependencies
+Inside your terminal cd into the root of the repo enter npm install to install the dependencies
 
 ```bash
-npm instal
+npm install
 ```
 
 Then npm run build, followed by npm run start to lunch the application
