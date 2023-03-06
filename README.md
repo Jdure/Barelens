@@ -43,7 +43,7 @@ NOTE: **You will need to create your own content to display data from the Direct
 
 ## Usage
 
-To view the website visit [Barelensphotography](https://barelens.vercel.app/)
+To view the website visit [Bare Lens Photography](https://barelens.vercel.app/)
 
 ## Contributing
 
