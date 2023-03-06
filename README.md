@@ -14,18 +14,12 @@ A custom website designed for client request intake and appointment scheduling.
 
 The website was built with the following tech stack
 
-<table style="background-color:snow;">
-  <tr>
-    <td align="center" valign="center"><img alt="Logo for Next.js" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original-wordmark.svg" width="100" height="100"/></td>
-    <td align="center" valign="center"><img alt="Logo for Tailwind" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-original-wordmark.svg" width="100" height="100"/></td>
-    <td align="center" valign="center"><img alt="Logo for PostgreSQL" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original-wordmark.svg" width="100" height="100"/></td>
-    </tr>
-    <tr>
-    <td align="center" valign="center"><img alt="Logo for Docker" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original-wordmark.svg" width="100" height="100"/></td>
-    <td align="center" valign="center"><img alt="Logo for Azure" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azure/azure-original-wordmark.svg" width="100" height="100"/></td>
-    <td align="center" valign="center"><img alt="Logo for Directus CMS" src="https://user-images.githubusercontent.com/522079/43096167-3a1b1118-8e86-11e8-9fb2-7b4e3b1368bc.png" width="100" height="100"/></td>
-    </tr>
-</table>
+![Next.js](	https://img.shields.io/badge/Next.js-000?logo=nextdotjs&logoColor=fff&style=for-the-badge)
+![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
+![Docker](	https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+
+With [Directus](https://directus.io/) as the content management system.
 
 ## Installation
 
