@@ -45,7 +45,7 @@ export default function AboutPage({ photographers }: AboutPageProps) {
                     />
                 </div>
                 <div className="flex flex-col sm:justify-center sm:basis-1/2">
-                    <div className="prose prose-lg mx-auto w-5/6 lg:w-full lg:prose-xl">
+                    <div className="prose prose-lg prose-slate mx-auto w-5/6 lg:w-full lg:prose-xl">
                     <p className="text-xl sm:text-2xl text-center font-headings">
                         {`Oh, Hi There! I’m ${photographers.name}`}
                     </p>
@@ -53,20 +53,11 @@ export default function AboutPage({ photographers }: AboutPageProps) {
                         {photographers.bio}
                     </p>
                     <p>View my most recent projects on{" "}
-                            <a href="#" className="no-underline">
+                            <a href="#" className="no-underline text-bold">
                                 Instagram!
                             </a>{" "}
                         </p>
                     </div>
-                    {/* <div className="flex flex-row items-center justify-center sm:justify-start mx-6 pt-4 sm:pt-8 ">
-                        <p className="text-lg leading-relaxed text-center sm:text-2xl sm:text-justify">
-                            View my most recent projects on{" "}
-                            <a href="#" className="font-bold">
-                                Instagram
-                            </a>{" "}
-                            !
-                        </p>
-                    </div> */}
                 </div>
             </div>
         </>
