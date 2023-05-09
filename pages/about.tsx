@@ -53,7 +53,7 @@ export default function AboutPage({ photographers }: AboutPageProps) {
                         {photographers.bio}
                     </p>
                     <p>View my most recent projects on{" "}
-                            <a href="#" className="no-underline text-bold">
+                            <a href="#" className="no-underline">
                                 Instagram!
                             </a>{" "}
                         </p>
