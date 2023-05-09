@@ -45,7 +45,7 @@ export default function AboutPage({ photographers }: AboutPageProps) {
                     />
                 </div>
                 <div className="flex flex-col sm:justify-center sm:basis-1/2">
-                    <div className="prose prose-lg mx-auto lg:prose-xl">
+                    <div className="prose prose-lg mx-auto w-3/4 lg:w-full lg:prose-xl">
                     <h2>
                         {`Oh, hi there! I’m ${photographers.name}`}
                     </h2>
