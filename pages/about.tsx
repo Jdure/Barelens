@@ -46,9 +46,9 @@ export default function AboutPage({ photographers }: AboutPageProps) {
                 </div>
                 <div className="flex flex-col sm:justify-center sm:basis-1/2">
                     <div className="prose prose-lg mx-auto w-4/5 lg:w-full lg:prose-xl">
-                    <h2 className="not-prose text-xl sm:text-2xl text-center">
+                    <p className="text-xl sm:text-2xl text-center font-headings">
                         {`Oh, Hi There! I’m ${photographers.name}`}
-                    </h2>
+                    </p>
                     <p>
                         {photographers.bio}
                     </p>
