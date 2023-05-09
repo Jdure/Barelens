@@ -45,12 +45,14 @@ export default function AboutPage({ photographers }: AboutPageProps) {
                     />
                 </div>
                 <div className="flex flex-col sm:justify-center sm:basis-1/2">
-                    <p className="py-2 text-2xl font-headings text-center mx-6 sm:pb-8 sm:text-4xl sm:text-start">
+                    <div className="prose prose-slate lg:prose-xl">
+                    <h2>
                         {`Oh, hi there! I’m ${photographers.name}`}
-                    </p>
-                    <p className="text-center text-lg leading-relaxed break-words mx-6 sm:text-2xl sm:text-justify">
+                    </h2>
+                    <p>
                         {photographers.bio}
                     </p>
+                    </div>
                     <div className="flex flex-row items-center justify-center sm:justify-start mx-6 pt-4 sm:pt-8 ">
                         <p className="text-lg leading-relaxed text-center sm:text-2xl sm:text-justify">
                             View my most recent projects on{" "}
