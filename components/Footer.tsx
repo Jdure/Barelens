@@ -4,6 +4,7 @@ import {
     TbBrandFacebook,
 } from "react-icons/tb"
 import Image from "next/image"
+import Link from "next/link"
 
 export function Footer() {
     const today = new Date()
@@ -21,7 +22,9 @@ export function Footer() {
                 />
             </div>
             <div className="flex items-center justify-around sm:justify-between sm:py-2 sm:px-4 basis-1/2">
-                <TbBrandInstagram className="text-white text-xl sm:text-3xl" />
+                <Link href="https://www.instagram.com/barelensphotos/">
+                    <TbBrandInstagram className="text-white text-xl sm:text-3xl" />
+                </Link>
 
                 <TbBrandTiktok className="text-white text-xl sm:text-3xl" />
 
