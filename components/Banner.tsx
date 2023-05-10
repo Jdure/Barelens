@@ -15,7 +15,7 @@ export function Banner() {
             <div className="text-xs text-center sm:justify-evenly sm:text-2xl flex flex-row py-4">
                 <p>Canadian Photographer</p>
                 <p>Portraits, Families & Weddings</p>
-                <p>Limited Liability Company LLC</p>
+                <p>Registered Canadian Business</p>
             </div>
         </div>
     )

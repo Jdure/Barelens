@@ -40,7 +40,7 @@ export function About({ data }: Images) {
                     Let&apos;s capture your memories today!
                 </p>
                 <button className="text-white text-sm w-11/12 h-max font-bold sm:w-1/2 sm:text-xl sm:py-2 sm:px-4 rounded-md bg-gray-400 hover:bg-gray-800">
-                    <Link href={"/contact"}>Schedule A Shoot</Link>
+                    <Link href={"/contact"}>Book A Shoot</Link>
                 </button>
             </div>
         </div>
