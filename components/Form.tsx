@@ -112,7 +112,7 @@ export function Form({ currSessions }: currSessionProps) {
                     Book A Session
                 </h2>
                 <p className="leading-relaxed mb-3 text-black text-sm sm:text-xl">
-                    Lorem ipsum, dolor sit amet consectetur elit
+                    Enter your appointment details
                 </p>
                 <form
                     ref={formRef}
@@ -195,7 +195,7 @@ export function Form({ currSessions }: currSessionProps) {
                     />
                     <button
                         type="submit"
-                        className="text-white text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-full bg-gray-400 hover:bg-gray-800"
+                        className="text-white text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-md bg-gray-400 hover:bg-gray-800"
                     >
                         Submit
                     </button>

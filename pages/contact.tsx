@@ -2,7 +2,8 @@ import React from "react"
 import { MdOutlineEmail, MdOutlineLocationOn } from "react-icons/md"
 import { FaInstagram } from "react-icons/fa"
 import dynamic from "next/dynamic"
-import { GetServerSideProps, GetStaticProps } from "next"
+import Link from "next/link"
+import { GetStaticProps } from "next"
 import { getDirectusClient } from "../lib/directus"
 
 const Form = dynamic(
@@ -33,22 +34,26 @@ export default function ContactPage({ currSessions }: currSessionProps) {
                         Contact Information
                     </h2>
                     <p className="text-base text-black py-1 sm:text-xl sm:text-center sm:py-4">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit
+                        Here&apos;s where you can find us
                     </p>
                     <div className="flex flex-col justify-between pt-4 pb-4 space-y-4 sm:space-y-8">
                         <div className="flex flex-row items-center">
                             <FaInstagram className="text-black text-lg sm:text-xl" />
-                            <p className="text-lg px-2 sm:text-2xl">
-                                @barelensphotography
-                            </p>
+                            <Link
+                                className="text-lg px-2 sm:text-2xl"
+                                href="https://www.instagram.com/barelensphotos/"
+                            >
+                                @barelensphotos
+                            </Link>
                         </div>
                         <div className="flex flex-row items-center">
                             <MdOutlineEmail className="text-black text-lg sm:text-xl" />
-                            <p className="text-lg px-2 sm:text-2xl">
-                                <a href="mailto:barelens@example.com">
-                                    barelens@example.com
-                                </a>
-                            </p>
+                            <Link
+                                className="text-lg px-2 sm:text-2xl"
+                                href="mailto:barelensphotos@gmail.com"
+                            >
+                                barelensphotos@gmail.com
+                            </Link>
                         </div>
                         <div className="flex flex-row items-center">
                             <MdOutlineLocationOn className="text-black text-lg sm:text-xl" />
