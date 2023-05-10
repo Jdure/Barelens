@@ -1,4 +1,5 @@
 import { MdOutlineEmail } from "react-icons/md"
+import Link from "next/link"
 
 export function Contact() {
     return (
@@ -9,7 +10,13 @@ export function Contact() {
                 </h2>
                 <div className="flex items-center space-x-2">
                     <MdOutlineEmail className="text-xl sm:text-3xl" />
-                    <p className="text-xl sm:text-3xl ">Barelens@example.com</p>
+
+                    <Link
+                        className="text-xl sm:text-3xl "
+                        href={"mailto:barelensphotos@gmail.com"}
+                    >
+                        barelensphotos@gmail.com
+                    </Link>
                 </div>
             </div>
         </div>
