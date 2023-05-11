@@ -52,7 +52,10 @@ export default function AboutPage({ photographers }: AboutPageProps) {
                         <p className="sm:text-justify">{photographers.bio}</p>
                         <p className="sm:text-justify">
                             View my most recent projects on{" "}
-                            <a href="#" className="no-underline font-bold">
+                            <a
+                                href="https://www.instagram.com/barelensphotos/"
+                                className="no-underline font-bold"
+                            >
                                 Instagram!
                             </a>{" "}
                         </p>
