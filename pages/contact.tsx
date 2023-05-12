@@ -63,7 +63,7 @@ export default function ContactPage({ currSessions }: currSessionProps) {
                         </div>
                     </div>
                 </div>
-                <div className="flex h-full w-full grayscale sm:basis-1/2">
+                <div className="flex h-full w-full sm:basis-1/2">
                     <Form currSessions={currSessions} />
                 </div>
             </div>
