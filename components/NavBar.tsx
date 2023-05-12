@@ -99,7 +99,7 @@ export default function NavBar() {
             </div>
             {/* Mobile Links  */}
             <div
-                className={`text-base bg-[#FFF6EA] px-3 overflow-hidden transition-all ease-out duration-150 sm:hidden sm:transition-none ${
+                className={`text-base bg-white px-3 overflow-hidden transition-all ease-out duration-150 sm:hidden sm:transition-none ${
                     isNavOpen ? "h-32" : "h-0"
                 }`}
             >
