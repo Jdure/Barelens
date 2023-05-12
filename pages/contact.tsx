@@ -29,16 +29,16 @@ export default function ContactPage({ currSessions }: currSessionProps) {
                 </p>
             </div>
             <div className="flex flex-col sm:flex-row pt-2 sm:pt-12 sm:h-full xl:h-screen">
-                <div className="flex flex-col bg-gray-100 items-center py-6 sm:basis-1/2">
-                    <h2 className="text-xl text-black py-1 sm:text-4xl">
+                <div className="flex flex-col bg-[#FFF6EA] items-center py-6 sm:basis-1/2">
+                    <h2 className="text-xl text-stone-800 py-1 sm:text-4xl">
                         Contact Information
                     </h2>
-                    <p className="text-base text-black py-1 sm:text-xl sm:text-center sm:py-4">
+                    <p className="text-base text-stone-800 py-1 sm:text-xl sm:text-center sm:py-4">
                         Here&apos;s where you can find us
                     </p>
                     <div className="flex flex-col justify-between pt-4 pb-4 space-y-4 sm:space-y-8">
                         <div className="flex flex-row items-center">
-                            <FaInstagram className="text-black text-lg sm:text-xl" />
+                            <FaInstagram className="text-stone-800 text-lg sm:text-xl" />
                             <Link
                                 className="text-lg px-2 sm:text-2xl"
                                 href="https://www.instagram.com/barelensphotos/"
@@ -47,7 +47,7 @@ export default function ContactPage({ currSessions }: currSessionProps) {
                             </Link>
                         </div>
                         <div className="flex flex-row items-center">
-                            <MdOutlineEmail className="text-black text-lg sm:text-xl" />
+                            <MdOutlineEmail className="text-stone-800 text-lg sm:text-xl" />
                             <Link
                                 className="text-lg px-2 sm:text-2xl"
                                 href="mailto:barelensphotos@gmail.com"
@@ -56,7 +56,7 @@ export default function ContactPage({ currSessions }: currSessionProps) {
                             </Link>
                         </div>
                         <div className="flex flex-row items-center">
-                            <MdOutlineLocationOn className="text-black text-lg sm:text-xl" />
+                            <MdOutlineLocationOn className="text-stone-800 text-lg sm:text-xl" />
                             <p className="text-lg px-2 sm:text-2xl">
                                 Ottawa, Canada
                             </p>

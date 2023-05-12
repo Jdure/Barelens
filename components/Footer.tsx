@@ -11,10 +11,10 @@ export function Footer() {
     const year = today.getFullYear()
 
     return (
-        <footer className="bottom-0 w-full relative flex py-2 bg-gray-600">
+        <footer className="bottom-0 w-full relative flex py-2 bg-[#EBD8C3]">
             <div className="basis-1/4">
                 <Image
-                    src="/images/White logo - no background.svg"
+                    src="/images/Black logo - no background.svg"
                     width={50}
                     height={50}
                     alt="Bare Lens Photography"
@@ -23,14 +23,14 @@ export function Footer() {
             </div>
             <div className="flex items-center justify-around sm:justify-between sm:py-2 sm:px-4 basis-1/2">
                 <Link href="https://www.instagram.com/barelensphotos/">
-                    <TbBrandInstagram className="text-white text-xl sm:text-3xl" />
+                    <TbBrandInstagram className="text-stone-800 text-xl sm:text-3xl" />
                 </Link>
 
-                <TbBrandTiktok className="text-white text-xl sm:text-3xl" />
+                <TbBrandTiktok className="text-stone-800 text-xl sm:text-3xl" />
 
-                <TbBrandFacebook className="text-white text-xl sm:text-3xl" />
+                <TbBrandFacebook className="text-stone-800 text-xl sm:text-3xl" />
             </div>
-            <p className="text-white text-xs text-center  py-2 px-4 basis-1/4 sm:text-2xl sm:text-right">
+            <p className="text-stone-800 sm:font-bold text-xs text-center  py-2 px-4 basis-1/4 sm:text-2xl sm:text-right">
                 &copy; {year} Bare Lens
             </p>
         </footer>

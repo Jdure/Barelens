@@ -195,7 +195,7 @@ export function Form({ currSessions }: currSessionProps) {
                     />
                     <button
                         type="submit"
-                        className="text-white text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-md bg-gray-400 hover:bg-gray-800"
+                        className="text-stone-800 text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-md bg-[#EBD8C3] hover:bg-[#6B6259] hover:text-white"
                     >
                         Submit
                     </button>
