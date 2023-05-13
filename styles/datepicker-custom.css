@@ -1,0 +1,13 @@
+.custom_header .react-datepicker__header {
+  background-color: #FFF6EA;
+}
+
+.custom_header .react-datepicker__day--selected {
+    background-color: #44403c;
+}
+
+/* TODO: 
+1.Time select needs to change background color 
+2. Hover state also
+
+*/

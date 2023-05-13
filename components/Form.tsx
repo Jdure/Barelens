@@ -171,6 +171,7 @@ export function Form({ currSessions }: currSessionProps) {
                     </label>
                     <ReactDatePicker
                         id="eventDate"
+                        calendarClassName="custom_header"
                         name="eventDate"
                         minDate={today}
                         showTimeSelect
