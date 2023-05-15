@@ -17,7 +17,7 @@ export function Works({ data }: Images) {
                     return (
                         <div
                             key={idx}
-                            className="flex flex-col items-center space-y-2 mb-6 md:basis-1/3 lg:grow"
+                            className="flex flex-col items-center space-y-2 mb-6 basis-1/2 md:basis-1/3 lg:grow"
                         >
                             <Image
                                 className="rounded-sm drop-shadow-2xl w-2/3 sm:w-3/5"
