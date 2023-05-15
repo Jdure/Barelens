@@ -26,7 +26,7 @@ export default function ServicesPage({ services }: ServicesPageProps) {
                 <p className="py-3 text-xl font-headings text-center sm:text-6xl">
                     Services & Rates
                 </p>
-                <div className="flex flex-wrap">
+                <div className="flex flex-wrap sm:w-4/5 mx-auto">
                     {services.map((service: ServiceProps) => (
                         <ImageCard
                             key={service.id}

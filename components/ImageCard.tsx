@@ -25,7 +25,7 @@ export function ImageCard({
                 width={720}
                 height={1280}
             />
-            <div className="group absolute bottom-0 inset-x-0 inset-y-3/4 transform duration-700 ease-in-out hover:inset-y-0 hover:-translate-y-0.5 m-3 rounded-sm flex flex-col items-center justify-around text-white font-bold bg-gradient-to-t from-stone-800">
+            <div className="group absolute bottom-0 inset-x-0 inset-y-3/4 transform duration-700 ease-in-out hover:-inset-y-1 hover:-translate-y-0.5 m-3 rounded-sm flex flex-col items-center justify-around text-white font-bold bg-gradient-to-t from-stone-800">
                 <h3 className="font-headings capitalize text-3xl">{plan}</h3>
                 <p className=" leading-relaxed text-base invisible group-hover:visible transform group-hover:delay-300 text-center sm:text-xl lg:text-2xl">
                     {desc}
