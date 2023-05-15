@@ -98,12 +98,12 @@ export function Form({ currSessions }: currSessionProps) {
     return (
         <div id="contact-form" className="container">
             {submitted ? (
-                <div className="absolute items-center bg-white leading-none rounded p-2 shadow text-black text-sm">
-                    <span className="inline-flex bg-gray-700 text-white rounded-full h-6 px-3 justify-center items-center my-2 sm:my-2">
+                <div className="flex items-center justify-center w-full sm:w-1/2 py-4 absolute bg-white leading-none rounded shadow text-sm sm:text-xl">
+                    <span className="bg-emerald-800 text-white rounded-full py-1 px-2 sm:px-4">
                         Thanks!
                     </span>
-                    <span className="inline-flex px-2 text-gray-700">
-                        We will contact you shortly to confirm your session!
+                    <span className="px-2 text-gray-800">
+                        We will contact you shortly to confirm your session
                     </span>
                 </div>
             ) : null}
@@ -171,6 +171,7 @@ export function Form({ currSessions }: currSessionProps) {
                     </label>
                     <ReactDatePicker
                         id="eventDate"
+                        calendarClassName="custom_header"
                         name="eventDate"
                         minDate={today}
                         showTimeSelect
@@ -182,7 +183,7 @@ export function Form({ currSessions }: currSessionProps) {
                             setHours(setMinutes(new Date(), 0), 12),
                             ...excludedTimes,
                         ]}
-                        className="text-lg text-center appearance-none bg-transparent border-b border-gray-400 w-3/4 ml-10 sm:ml-16 text-black leading-none focus:outline-none"
+                        className="text-lg text-center appearance-none bg-[#FFF6EA] border-b border-gray-400 w-3/4 ml-10 sm:ml-16 text-black leading-none focus:outline-none"
                         selected={startDate}
                         filterDate={isWeekend}
                         dateFormat="MMMM d, yyyy h:mm aa"
@@ -195,7 +196,7 @@ export function Form({ currSessions }: currSessionProps) {
                     />
                     <button
                         type="submit"
-                        className="text-white text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-md bg-gray-400 hover:bg-gray-800"
+                        className="text-stone-800 text-sm w-1/2 h-max font-bold sm:w-1/2 sm:text-xl rounded-md bg-[#EBD8C3] hover:bg-[#6B6259] hover:text-white"
                     >
                         Submit
                     </button>

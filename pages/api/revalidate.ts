@@ -1,7 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next"
 
-// TODO: Revalidate dynamically - Should be able to revalidate [home, service and about]
-
 export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse

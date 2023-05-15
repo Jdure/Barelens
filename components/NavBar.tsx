@@ -8,9 +8,9 @@ export default function NavBar() {
     const [isNavOpen, setIsNavOpen] = useState(false)
     const currRoute = useRouter().pathname
     const listStyle =
-        "text-sm text-gray-300  sm:text-2xl py-2 hover:text-gray-800"
-    const activeLinkStyle = "text-gray-800  sm:text-2xl py-2"
-    const mobileListStyle = "w-full hover:bg-gray-100"
+        "text-sm text-stone-300  sm:text-2xl py-2 hover:text-stone-800"
+    const activeLinkStyle = "text-stone-800  sm:text-2xl py-2"
+    const mobileListStyle = "w-full hover:bg-stone-100"
 
     const menuRef = useRef<HTMLDivElement>(null)
     const toggleMenu = () => {
@@ -99,7 +99,7 @@ export default function NavBar() {
             </div>
             {/* Mobile Links  */}
             <div
-                className={`text-base bg-gray-50 px-3 overflow-hidden transition-all ease-out duration-150 sm:hidden sm:transition-none ${
+                className={`text-base bg-white px-3 overflow-hidden transition-all ease-out duration-150 sm:hidden sm:transition-none ${
                     isNavOpen ? "h-32" : "h-0"
                 }`}
             >
