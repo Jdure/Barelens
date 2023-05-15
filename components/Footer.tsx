@@ -8,7 +8,7 @@ export function Footer() {
 
     return (
         <footer className="bottom-0 w-full relative flex py-2 bg-[#EBD8C3]">
-            <div className="grow">
+            <div className="w-1/4">
                 <Image
                     src="/images/Black logo - no background.svg"
                     width={50}
@@ -17,7 +17,7 @@ export function Footer() {
                     className="w-auto pl-1 sm:w-36 sm:mx-4"
                 />
             </div>
-            <div className="flex flex-none items-center space-x-4 sm:py-2 sm:px-4">
+            <div className="flex w-3/4 justify-end items-end sm:items-center space-x-4 px-6 sm:py-2 sm:px-4">
                 <Link href="https://www.instagram.com/barelensphotos/">
                     <AiOutlineInstagram className="text-stone-800 text-xl sm:text-3xl" />
                 </Link>

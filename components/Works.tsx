@@ -17,10 +17,10 @@ export function Works({ data }: Images) {
                     return (
                         <div
                             key={idx}
-                            className="flex flex-col items-center space-y-2 mb-6 lg:basis-1/2 lg:grow"
+                            className="flex flex-col items-center space-y-2 mb-6 md:basis-1/3 lg:grow"
                         >
                             <Image
-                                className="rounded-sm drop-shadow-2xl w-3/4"
+                                className="rounded-sm drop-shadow-2xl w-2/3 sm:w-3/5"
                                 src={
                                     getImageUrl(
                                         value.section_images[0]
