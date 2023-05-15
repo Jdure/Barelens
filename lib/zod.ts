@@ -15,8 +15,8 @@ export const Request = z.object({
         .email()
         .min(10, { message: "Email must contain at least 10 character(s)" }),
     service: z.enum([
-        "portrait",
-        "couple",
+        "headshots",
+        "unions",
         "engagement",
         "wedding",
         "family",

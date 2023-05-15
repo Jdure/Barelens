@@ -157,8 +157,8 @@ export function Form({ currSessions }: currSessionProps) {
                         className="text-lg text-black relative w-3/4 bg-white border border-gray-300 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
                     >
                         <option value="">Select Service</option>
-                        <option value="portrait">Portrait</option>
-                        <option value="couple">Couple</option>
+                        <option value="headshots">Headshots</option>
+                        <option value="unions">Unions</option>
                         <option value="engagement">Engagement</option>
                         <option value="wedding">Wedding</option>
                         <option value="family">Family</option>
@@ -176,7 +176,7 @@ export function Form({ currSessions }: currSessionProps) {
                         minDate={today}
                         showTimeSelect
                         filterTime={isWeekend}
-                        timeIntervals={90}
+                        timeIntervals={180}
                         minTime={setHours(setMinutes(new Date(), 0), 9)}
                         maxTime={setHours(setMinutes(new Date(), 0), 20)}
                         excludeTimes={[
