@@ -1,9 +1,15 @@
-import { Key } from "react"
+import { Key, useRef } from "react"
 import Image from "next/image"
 import { Images, ImgProps } from "../types"
 import getImageUrl from "../util/getImagesUrl"
+import { useOnScreen } from "../util/useOnScreen"
+
+// TODO: Implement Intersection Observer
 
 export function Works({ data }: Images) {
+    const myRef: any = useRef<HTMLDivElement>()
+    const OnScreen: boolean = useOnScreen<HTMLDivElement>(myRef, "-300px")
+
     return (
         <>
             <h2 className="text-lg my-4 text-center font-body sm:text-3xl sm:my-8">
@@ -28,6 +34,7 @@ export function Works({ data }: Images) {
                                         "default"
                                     ) || ""
                                 }
+                                loading="lazy"
                                 width={400}
                                 height={500}
                                 alt={value.title}
