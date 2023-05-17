@@ -1,9 +1,7 @@
-import { Key, useRef } from "react"
+import { Key } from "react"
 import Image from "next/image"
 import { Images, ImgProps } from "../types"
 import getImageUrl from "../util/getImagesUrl"
-
-// TODO: Implement Intersection Observer
 
 export function Works({ data }: Images) {
     return (
