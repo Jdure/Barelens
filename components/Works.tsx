@@ -3,10 +3,10 @@ import "swiper/css"
 import Image from "next/image"
 import { Images, ImgProps } from "../types"
 import getImageUrl from "../util/getImagesUrl"
+import { Tooltip } from "./Tooltip"
 
 /* 
 TODO:
-1. Add Tool tip to images
 2. Remove redundancy
 
  */
@@ -55,21 +55,22 @@ export function Works({ data }: Images) {
             <div className="container columns-2 gap-3 py-6 w-11/12  mx-auto sm:hidden">
                 {data.map((value: ImgProps, idx: Key) => {
                     return (
-                        <Image
-                            key={idx}
-                            className="rounded-md aspect-square object-cover mb-2"
-                            src={
-                                getImageUrl(
-                                    value.section_images[0]
-                                        .primary_image as string,
-                                    "default"
-                                ) || ""
-                            }
-                            loading="lazy"
-                            width={400}
-                            height={400}
-                            alt={value.title}
-                        />
+                        <Tooltip key={idx} msg={value.title}>
+                            <Image
+                                className="rounded-md aspect-square object-cover mb-2"
+                                src={
+                                    getImageUrl(
+                                        value.section_images[0]
+                                            .primary_image as string,
+                                        "default"
+                                    ) || ""
+                                }
+                                loading="lazy"
+                                width={400}
+                                height={400}
+                                alt={value.title}
+                            />
+                        </Tooltip>
                     )
                 })}
             </div>
